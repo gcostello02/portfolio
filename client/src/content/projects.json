@@ -9,9 +9,6 @@
       "Applied Styled Components for modular design, enhancing the maintainability and styling consistency of the application"
     ],
     "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "Styled Components"],
-    "githubUrl": null,
-    "demoUrl": null,
-    "media": [],
     "featured": true,
     "dates": "Fall 2023 - Spring 2024"
   },
@@ -25,9 +22,6 @@
       "Employed Django for the backend and PostgreSQL for data management, using the Bootstrap library for responsive styling"
     ],
     "technologies": ["Django", "PostgreSQL", "Google Maps API", "Bootstrap", "Python"],
-    "githubUrl": null,
-    "demoUrl": null,
-    "media": [],
     "featured": true,
     "dates": "Fall 2023"
   }

@@ -48,16 +48,23 @@ export interface Experience {
   technologies: string[];
 }
 
+export interface ProjectMedia {
+  type: "image" | "video" | "youtube" | "iframe";
+  url: string;
+  thumbnail?: string;
+  caption?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   longDescription: string[];
   technologies: string[];
-  githubUrl: string | null;
-  demoUrl: string | null;
-  media: string[];
-  featured: boolean;
+  githubUrl?: string | null;
+  demoUrl?: string | null;
+  media?: ProjectMedia[];
+  featured?: boolean;
   dates: string;
 }
 

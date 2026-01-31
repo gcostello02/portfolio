@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, Image as ImageIcon } from "lucide-react";
+import { ExternalLink, Calendar, Image as ImageIcon, Play, Globe } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/ImageLightbox";
-import { getProjects, type Project } from "@/lib/content";
+import { getProjects, type Project, type ProjectMedia } from "@/lib/content";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,9 +25,61 @@ const cardVariants = {
   },
 };
 
+function MediaThumbnail({ media, onClick }: { media: ProjectMedia; onClick: () => void }) {
+  const getThumbnailUrl = () => {
+    if (media.thumbnail) return media.thumbnail;
+    if (media.type === "image") return media.url;
+    if (media.type === "youtube") {
+      const videoId = media.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s]+)/)?.[1];
+      return videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : null;
+    }
+    return null;
+  };
+
+  const thumbnailUrl = getThumbnailUrl();
+
+  const getIcon = () => {
+    switch (media.type) {
+      case "video":
+      case "youtube":
+        return <Play className="h-5 w-5 text-white drop-shadow-md" />;
+      case "iframe":
+        return <Globe className="h-5 w-5 text-white drop-shadow-md" />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <button
+      className="shrink-0 w-20 h-20 rounded-md overflow-hidden bg-muted hover-elevate relative"
+      onClick={onClick}
+    >
+      {thumbnailUrl ? (
+        <img
+          src={thumbnailUrl}
+          alt="Preview"
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center bg-muted">
+          {getIcon() || <ImageIcon className="h-5 w-5 text-muted-foreground" />}
+        </div>
+      )}
+      {media.type !== "image" && thumbnailUrl && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+          {getIcon()}
+        </div>
+      )}
+    </button>
+  );
+}
+
 function ProjectCard({ project }: { project: Project }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const media = project.media || [];
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -66,29 +118,22 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
 
-          {project.media.length > 0 && (
+          {media.length > 0 && (
             <div className="flex gap-2 overflow-x-auto pb-1">
-              {project.media.slice(0, 4).map((mediaUrl, index) => (
-                <button
+              {media.slice(0, 4).map((item, index) => (
+                <MediaThumbnail
                   key={index}
-                  className="shrink-0 w-16 h-16 rounded-md overflow-hidden bg-muted hover-elevate"
+                  media={item}
                   onClick={() => openLightbox(index)}
-                  data-testid={`button-project-media-${project.id}-${index}`}
-                >
-                  <img
-                    src={mediaUrl}
-                    alt={`${project.title} preview ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
+                />
               ))}
-              {project.media.length > 4 && (
+              {media.length > 4 && (
                 <button
-                  className="shrink-0 w-16 h-16 rounded-md bg-muted flex items-center justify-center text-sm text-muted-foreground hover-elevate"
+                  className="shrink-0 w-20 h-20 rounded-md bg-muted flex items-center justify-center text-sm text-muted-foreground hover-elevate"
                   onClick={() => openLightbox(4)}
                   data-testid={`button-project-media-more-${project.id}`}
                 >
-                  <ImageIcon className="h-4 w-4 mr-1" />+{project.media.length - 4}
+                  <ImageIcon className="h-4 w-4 mr-1" />+{media.length - 4}
                 </button>
               )}
             </div>
@@ -125,11 +170,11 @@ function ProjectCard({ project }: { project: Project }) {
         </CardContent>
       </Card>
 
-      {project.media.length > 0 && (
+      {media.length > 0 && (
         <ImageLightbox
           isOpen={lightboxOpen}
           onClose={() => setLightboxOpen(false)}
-          media={project.media}
+          media={media}
           currentIndex={lightboxIndex}
           onIndexChange={setLightboxIndex}
         />

@@ -2,11 +2,12 @@ import { useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { type ProjectMedia } from "@/lib/content";
 
 interface ImageLightboxProps {
   isOpen: boolean;
   onClose: () => void;
-  media: string[];
+  media: ProjectMedia[];
   currentIndex: number;
   onIndexChange: (index: number) => void;
 }
@@ -61,10 +62,56 @@ export function ImageLightbox({
   }, [isOpen]);
 
   const currentMedia = media[currentIndex];
-  const isVideo =
-    currentMedia?.endsWith(".mp4") ||
-    currentMedia?.endsWith(".webm") ||
-    currentMedia?.endsWith(".mov");
+
+  const getYouTubeEmbedUrl = (url: string) => {
+    const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s]+)/)?.[1];
+    return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+  };
+
+  const renderMedia = () => {
+    if (!currentMedia) return null;
+
+    switch (currentMedia.type) {
+      case "video":
+        return (
+          <video
+            src={currentMedia.url}
+            controls
+            autoPlay
+            className="max-w-full max-h-[85vh] rounded-lg"
+            data-testid="video-lightbox-player"
+          />
+        );
+      case "youtube":
+        return (
+          <iframe
+            src={getYouTubeEmbedUrl(currentMedia.url)}
+            className="w-[80vw] h-[45vw] max-w-[1200px] max-h-[675px] rounded-lg"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            data-testid="youtube-lightbox-player"
+          />
+        );
+      case "iframe":
+        return (
+          <iframe
+            src={currentMedia.url}
+            className="w-[90vw] h-[80vh] max-w-[1400px] rounded-lg bg-white"
+            data-testid="iframe-lightbox-player"
+          />
+        );
+      case "image":
+      default:
+        return (
+          <img
+            src={currentMedia.url}
+            alt={currentMedia.caption || `Media ${currentIndex + 1}`}
+            className="max-w-full max-h-[85vh] rounded-lg object-contain"
+            data-testid="image-lightbox-display"
+          />
+        );
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -119,27 +166,17 @@ export function ImageLightbox({
           )}
 
           <motion.div
-            className="relative z-10 max-w-[90vw] max-h-[90vh]"
+            className="relative z-10 flex flex-col items-center"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            {isVideo ? (
-              <video
-                src={currentMedia}
-                controls
-                autoPlay
-                className="max-w-full max-h-[90vh] rounded-lg"
-                data-testid="video-lightbox-player"
-              />
-            ) : (
-              <img
-                src={currentMedia}
-                alt={`Media ${currentIndex + 1}`}
-                className="max-w-full max-h-[90vh] rounded-lg object-contain"
-                data-testid="image-lightbox-display"
-              />
+            {renderMedia()}
+            {currentMedia?.caption && (
+              <p className="mt-3 text-white/80 text-sm text-center max-w-lg">
+                {currentMedia.caption}
+              </p>
             )}
           </motion.div>
 
