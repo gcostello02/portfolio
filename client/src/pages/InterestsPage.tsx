@@ -34,7 +34,7 @@ export default function InterestsPage() {
       exit="exit"
       data-testid="interests-page"
     >
-      <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
+      <section className="relative py-10 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10">
             <Layers className="h-32 w-32 text-primary" />

@@ -8,7 +8,6 @@ import { useTrailProgress } from "@/components/TrailProgress";
 import { useTheme } from "@/components/ThemeProvider";
 import { getProfile } from "@/lib/content";
 import { Button } from "@/components/ui/button";
-import { RecruiterPacketTrigger } from "@/components/RecruiterPacketTrigger";
 
 const SECTIONS: SectionCardData[] = [
   {
@@ -202,7 +201,6 @@ export default function Home() {
         </section>
       </div>
       
-      <RecruiterPacketTrigger />
     </div>
   );
 }
