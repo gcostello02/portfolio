@@ -1,8 +1,8 @@
-# Blue Ridge Trails Portfolio
+# Grant Costello Portfolio
 
 ## Overview
 
-A polished, modern portfolio website with a "Blue Ridge Trails" mountain theme inspired by Charlottesville and UVA. The site features an interactive trail map homepage with clickable stops representing different portfolio sections, gamification through trail progress tracking, and a recruiter packet unlock system. Content is data-driven through JSON files for easy editing.
+A polished, modern portfolio website with an interactive homepage featuring a topographic background and animated path with clickable points representing different portfolio sections. Includes gamification through progress tracking (sections visited) and a recruiter packet unlock system. Content is data-driven through JSON files for easy editing. The visual design uses topographic elements for aesthetics while keeping all text/labels neutral and professional.
 
 ## User Preferences
 

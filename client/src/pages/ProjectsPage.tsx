@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mountain, Telescope } from "lucide-react";
+import { ArrowLeft, Layers, FolderGit2 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -22,7 +22,7 @@ export default function ProjectsPage() {
 
   useEffect(() => {
     markVisited("projects");
-    document.title = "Projects - Grant Costello | Blue Ridge Trails";
+    document.title = "Projects - Grant Costello";
   }, [markVisited]);
 
   return (
@@ -37,10 +37,10 @@ export default function ProjectsPage() {
       <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10">
-            <Mountain className="h-32 w-32 text-primary" />
+            <Layers className="h-32 w-32 text-primary" />
           </div>
           <div className="absolute bottom-10 right-10">
-            <Mountain className="h-24 w-24 text-secondary" />
+            <Layers className="h-24 w-24 text-secondary" />
           </div>
         </div>
         
@@ -53,7 +53,7 @@ export default function ProjectsPage() {
               data-testid="button-back-trail"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Trail Map
+              Back to Home
             </Button>
           </Link>
           
@@ -65,16 +65,16 @@ export default function ProjectsPage() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-primary/10">
-                <Telescope className="h-6 w-6 text-primary" />
+                <FolderGit2 className="h-6 w-6 text-primary" />
               </div>
-              <span className="text-sm font-medium text-primary">Project Summit</span>
+              <span className="text-sm font-medium text-primary">Portfolio</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Projects
             </h1>
             <p className="text-lg text-muted-foreground">
-              Explore the landscape of completed projects and technical achievements. 
-              Each project represents a milestone in the journey.
+              Explore the applications and systems I've built. 
+              Each project showcases different skills and technologies.
             </p>
           </motion.div>
         </div>

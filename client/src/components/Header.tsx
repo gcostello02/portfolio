@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import {
-  Mountain,
+  Briefcase,
   Menu,
   Github,
   FileText,
@@ -76,7 +76,7 @@ export function Header() {
               className="flex items-center gap-2 font-semibold text-lg hover-elevate rounded-md px-2 py-1 -ml-2"
               data-testid="link-logo"
             >
-              <Mountain className="h-6 w-6 text-primary" />
+              <Briefcase className="h-6 w-6 text-primary" />
               <span>Grant Costello</span>
             </Link>
 
@@ -182,7 +182,7 @@ export function Header() {
                 <SheetContent side="right" className="w-80">
                   <SheetHeader>
                     <SheetTitle className="flex items-center gap-2">
-                      <Mountain className="h-5 w-5 text-primary" />
+                      <Briefcase className="h-5 w-5 text-primary" />
                       Navigation
                     </SheetTitle>
                   </SheetHeader>

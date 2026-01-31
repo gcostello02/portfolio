@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mountain, Compass } from "lucide-react";
+import { ArrowLeft, Layers, Code, Compass } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -22,7 +22,7 @@ export default function SkillsPage() {
 
   useEffect(() => {
     markVisited("skills");
-    document.title = "Skills - Grant Costello | Blue Ridge Trails";
+    document.title = "Skills - Grant Costello";
   }, [markVisited]);
 
   return (
@@ -37,10 +37,10 @@ export default function SkillsPage() {
       <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10">
-            <Mountain className="h-32 w-32 text-primary" />
+            <Layers className="h-32 w-32 text-primary" />
           </div>
           <div className="absolute bottom-10 right-10">
-            <Mountain className="h-24 w-24 text-secondary" />
+            <Layers className="h-24 w-24 text-secondary" />
           </div>
         </div>
         
@@ -53,7 +53,7 @@ export default function SkillsPage() {
               data-testid="button-back-trail"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Trail Map
+              Back to Home
             </Button>
           </Link>
           
@@ -67,14 +67,14 @@ export default function SkillsPage() {
               <div className="p-2 rounded-lg bg-primary/10">
                 <Compass className="h-6 w-6 text-primary" />
               </div>
-              <span className="text-sm font-medium text-primary">Skills Ridge</span>
+              <span className="text-sm font-medium text-primary">Technical Expertise</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Skills
             </h1>
             <p className="text-lg text-muted-foreground">
-              Navigate through the technical terrain. Languages, frameworks, 
-              and tools mastered along the way.
+              The languages, frameworks, and tools I've learned and use. 
+              From frontend to backend and everything in between.
             </p>
           </motion.div>
         </div>

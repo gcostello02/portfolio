@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mountain, TrendingUp } from "lucide-react";
+import { ArrowLeft, Layers, Briefcase, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
 
   useEffect(() => {
     markVisited("experience");
-    document.title = "Experience - Grant Costello | Blue Ridge Trails";
+    document.title = "Experience - Grant Costello";
   }, [markVisited]);
 
   return (
@@ -37,10 +37,10 @@ export default function ExperiencePage() {
       <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10">
-            <Mountain className="h-32 w-32 text-primary" />
+            <Layers className="h-32 w-32 text-primary" />
           </div>
           <div className="absolute bottom-10 right-10">
-            <Mountain className="h-24 w-24 text-secondary" />
+            <Layers className="h-24 w-24 text-secondary" />
           </div>
         </div>
         
@@ -53,7 +53,7 @@ export default function ExperiencePage() {
               data-testid="button-back-trail"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Trail Map
+              Back to Home
             </Button>
           </Link>
           
@@ -67,14 +67,14 @@ export default function ExperiencePage() {
               <div className="p-2 rounded-lg bg-primary/10">
                 <TrendingUp className="h-6 w-6 text-primary" />
               </div>
-              <span className="text-sm font-medium text-primary">Career Trail</span>
+              <span className="text-sm font-medium text-primary">Career History</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Experience
             </h1>
             <p className="text-lg text-muted-foreground">
-              Traverse the professional path - from internships to current role. 
-              See the elevation gained through each position.
+              My professional growth from internships to my current role. 
+              See how each position has shaped my skills and expertise.
             </p>
           </motion.div>
         </div>

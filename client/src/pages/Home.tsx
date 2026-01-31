@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Compass, Mountain } from "lucide-react";
+import { MapPin, Briefcase } from "lucide-react";
 import { TopoBackground } from "@/components/TopoBackground";
 import { TrailPath, TRAIL_POINTS } from "@/components/TrailPath";
 import { TrailPin, type TrailPinData } from "@/components/TrailPin";
@@ -22,43 +22,43 @@ import { RecruiterPacketTrigger } from "@/components/RecruiterPacketTrigger";
 const TRAIL_STOPS: TrailPinData[] = [
   {
     id: "home",
-    label: "Trailhead",
-    sublabel: "Base Camp",
+    label: "About",
+    sublabel: "Learn about me",
     iconType: "home",
     position: { x: TRAIL_POINTS[0].x, y: TRAIL_POINTS[0].y },
   },
   {
     id: "projects",
-    label: "Overlook",
-    sublabel: "Projects",
+    label: "Projects",
+    sublabel: "View my work",
     iconType: "projects",
     position: { x: TRAIL_POINTS[1].x, y: TRAIL_POINTS[1].y },
   },
   {
     id: "experience",
-    label: "Ridgeline",
-    sublabel: "Experience",
+    label: "Experience",
+    sublabel: "Career history",
     iconType: "experience",
     position: { x: TRAIL_POINTS[2].x, y: TRAIL_POINTS[2].y },
   },
   {
     id: "skills",
-    label: "Switchbacks",
-    sublabel: "Skills",
+    label: "Skills",
+    sublabel: "Technical abilities",
     iconType: "skills",
     position: { x: TRAIL_POINTS[3].x, y: TRAIL_POINTS[3].y },
   },
   {
     id: "interests",
-    label: "Campfire",
-    sublabel: "Interests",
+    label: "Interests",
+    sublabel: "Beyond code",
     iconType: "interests",
     position: { x: TRAIL_POINTS[4].x, y: TRAIL_POINTS[4].y },
   },
   {
     id: "contact",
-    label: "Summit",
-    sublabel: "Contact",
+    label: "Contact",
+    sublabel: "Get in touch",
     iconType: "contact",
     position: { x: TRAIL_POINTS[5].x, y: TRAIL_POINTS[5].y },
   },
@@ -66,34 +66,34 @@ const TRAIL_STOPS: TrailPinData[] = [
 
 const DRAWER_CONTENT: Record<string, { title: string; description: string; action: string }> = {
   home: {
-    title: "Welcome to Base Camp",
-    description: "Your journey through Grant's portfolio begins here. Explore each trail stop to discover skills, projects, and experiences.",
-    action: "Start Exploring",
+    title: "About Me",
+    description: "Learn about my background, education, and what drives me as a software engineer.",
+    action: "Learn More",
   },
   projects: {
-    title: "Project Overlook",
-    description: "View the landscape of completed projects and technical achievements. Each project represents a milestone in the journey.",
+    title: "My Projects",
+    description: "Explore the applications and systems I've built. Each project showcases different skills and technologies.",
     action: "View Projects",
   },
   experience: {
-    title: "Career Ridgeline",
-    description: "Traverse the professional path - from internships to current role. See the elevation gained through each position.",
+    title: "Work Experience",
+    description: "See my professional journey from internships to my current role as a software engineer.",
     action: "View Experience",
   },
   skills: {
-    title: "Technical Switchbacks",
-    description: "Navigate through the technical terrain. Languages, frameworks, and tools mastered along the way.",
+    title: "Technical Skills",
+    description: "Languages, frameworks, and tools I've mastered throughout my career.",
     action: "View Skills",
   },
   interests: {
-    title: "Campfire Stories",
-    description: "Rest and discover the passions beyond code. Sports, hobbies, and the things that fuel creativity.",
+    title: "Beyond Code",
+    description: "Discover my passions outside of software development - sports, teaching, and community involvement.",
     action: "View Interests",
   },
   contact: {
-    title: "Summit View",
-    description: "You've reached the peak! Connect and start a conversation about opportunities ahead.",
-    action: "Get in Touch",
+    title: "Get in Touch",
+    description: "Ready to connect? Let's start a conversation about opportunities.",
+    action: "Contact Me",
   },
 };
 
@@ -147,8 +147,8 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.2, duration: 0.5 }}
             >
-              <Compass className="w-4 h-4" />
-              <span className="text-sm font-medium">Blue Ridge Trails</span>
+              <Briefcase className="w-4 h-4" />
+              <span className="text-sm font-medium">Software Engineer</span>
             </motion.div>
             
             <motion.h1
@@ -181,7 +181,7 @@ export default function Home() {
               </div>
               <span className="text-border">|</span>
               <div className="flex items-center gap-1.5">
-                <Mountain className="w-4 h-4" />
+                <Briefcase className="w-4 h-4" />
                 <span>{profile.title}</span>
               </div>
             </motion.div>
@@ -197,10 +197,10 @@ export default function Home() {
               transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.5, duration: 0.4 }}
             >
               <h2 className="text-xl font-semibold text-foreground mb-2">
-                Explore the Trail
+                Explore My Portfolio
               </h2>
               <p className="text-sm text-muted-foreground">
-                Tap each stop to discover more
+                Tap each section to discover more
               </p>
             </motion.div>
             
@@ -241,7 +241,7 @@ export default function Home() {
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-              Chart Your Path
+              Let's Connect
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               {profile.summary.split('\n')[0]}
@@ -297,7 +297,7 @@ export default function Home() {
                   onClick={closeDrawer}
                   data-testid="button-drawer-close"
                 >
-                  Continue Exploring
+                  Keep Browsing
                 </Button>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mountain, Flame } from "lucide-react";
+import { ArrowLeft, Layers, Heart, Flame } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { InterestsSection } from "@/components/sections/InterestsSection";
@@ -22,7 +22,7 @@ export default function InterestsPage() {
 
   useEffect(() => {
     markVisited("interests");
-    document.title = "Interests - Grant Costello | Blue Ridge Trails";
+    document.title = "Interests - Grant Costello";
   }, [markVisited]);
 
   return (
@@ -37,10 +37,10 @@ export default function InterestsPage() {
       <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10">
-            <Mountain className="h-32 w-32 text-primary" />
+            <Layers className="h-32 w-32 text-primary" />
           </div>
           <div className="absolute bottom-10 right-10">
-            <Mountain className="h-24 w-24 text-secondary" />
+            <Layers className="h-24 w-24 text-secondary" />
           </div>
         </div>
         
@@ -53,7 +53,7 @@ export default function InterestsPage() {
               data-testid="button-back-trail"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Trail Map
+              Back to Home
             </Button>
           </Link>
           
@@ -67,14 +67,14 @@ export default function InterestsPage() {
               <div className="p-2 rounded-lg bg-primary/10">
                 <Flame className="h-6 w-6 text-primary" />
               </div>
-              <span className="text-sm font-medium text-primary">Interest Valley</span>
+              <span className="text-sm font-medium text-primary">Personal Life</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Interests
             </h1>
             <p className="text-lg text-muted-foreground">
-              Rest and discover the passions beyond code. Sports, hobbies, 
-              and the things that fuel creativity.
+              Discover my passions beyond software development. Sports, teaching, 
+              and the activities that keep me balanced.
             </p>
           </motion.div>
         </div>

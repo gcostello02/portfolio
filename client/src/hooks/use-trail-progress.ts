@@ -4,12 +4,12 @@ const STORAGE_KEY = "trailProgress";
 const UNLOCK_THRESHOLD = 3;
 
 export const TRAIL_STOPS = [
-  { id: "home", label: "Base Camp", path: "/" },
-  { id: "experience", label: "Career Trail", path: "/experience" },
-  { id: "projects", label: "Project Summit", path: "/projects" },
-  { id: "skills", label: "Skills Ridge", path: "/skills" },
-  { id: "interests", label: "Interest Valley", path: "/interests" },
-  { id: "contact", label: "Summit View", path: "/contact" },
+  { id: "home", label: "About", path: "/" },
+  { id: "experience", label: "Experience", path: "/experience" },
+  { id: "projects", label: "Projects", path: "/projects" },
+  { id: "skills", label: "Skills", path: "/skills" },
+  { id: "interests", label: "Interests", path: "/interests" },
+  { id: "contact", label: "Contact", path: "/contact" },
 ] as const;
 
 export type TrailStopId = (typeof TRAIL_STOPS)[number]["id"];
