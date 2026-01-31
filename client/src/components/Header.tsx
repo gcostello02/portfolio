@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import {
-  Briefcase,
   Menu,
   Github,
   FileText,
   ExternalLink,
   ChevronDown,
 } from "lucide-react";
+import { RotundaIcon } from "./icons/RotundaIcon";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -76,7 +76,7 @@ export function Header() {
               className="flex items-center gap-2 font-semibold text-lg hover-elevate rounded-md px-2 py-1 -ml-2"
               data-testid="link-logo"
             >
-              <Briefcase className="h-6 w-6 text-primary" />
+              <RotundaIcon className="h-6 w-6 text-primary" />
               <span>Grant Costello</span>
             </Link>
 
@@ -178,7 +178,7 @@ export function Header() {
                 <SheetContent side="right" className="w-80">
                   <SheetHeader>
                     <SheetTitle className="flex items-center gap-2">
-                      <Briefcase className="h-5 w-5 text-primary" />
+                      <RotundaIcon className="h-5 w-5 text-primary" />
                       Navigation
                     </SheetTitle>
                   </SheetHeader>
