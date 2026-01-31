@@ -8,12 +8,12 @@ interface TrailPoint {
 }
 
 const TRAIL_POINTS: TrailPoint[] = [
-  { x: 15, y: 75 },
-  { x: 25, y: 55 },
-  { x: 50, y: 45 },
-  { x: 65, y: 55 },
-  { x: 75, y: 40 },
-  { x: 85, y: 25 },
+  { x: 15, y: 70 },
+  { x: 30, y: 55 },
+  { x: 45, y: 45 },
+  { x: 60, y: 40 },
+  { x: 75, y: 32 },
+  { x: 90, y: 25 },
 ];
 
 function generateSmoothPath(points: TrailPoint[]): string {
@@ -27,10 +27,10 @@ function generateSmoothPath(points: TrailPoint[]): string {
     const prev = points[i - 1] || current;
     const afterNext = points[i + 2] || next;
     
-    const cp1x = current.x + (next.x - prev.x) * 0.2;
-    const cp1y = current.y + (next.y - prev.y) * 0.2;
-    const cp2x = next.x - (afterNext.x - current.x) * 0.2;
-    const cp2y = next.y - (afterNext.y - current.y) * 0.2;
+    const cp1x = current.x + (next.x - prev.x) * 0.15;
+    const cp1y = current.y + (next.y - prev.y) * 0.15;
+    const cp2x = next.x - (afterNext.x - current.x) * 0.15;
+    const cp2y = next.y - (afterNext.y - current.y) * 0.15;
     
     path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
   }
