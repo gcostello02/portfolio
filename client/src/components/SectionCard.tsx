@@ -7,28 +7,27 @@ import {
   Heart, 
   Mail,
   Check,
-  LucideIcon,
-  ChevronRight
+  ChevronRight,
+  LucideIcon
 } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { Card } from "@/components/ui/card";
 
-export interface TrailPinData {
+export interface SectionCardData {
   id: string;
   label: string;
   sublabel: string;
   iconType: "home" | "projects" | "experience" | "skills" | "interests" | "contact";
-  position: { x: number; y: number };
 }
 
-interface TrailPinProps {
-  data: TrailPinData;
+interface SectionCardProps {
+  data: SectionCardData;
   isVisited: boolean;
   onClick: () => void;
   index: number;
 }
 
-const iconMap: Record<TrailPinData["iconType"], LucideIcon> = {
+const iconMap: Record<SectionCardData["iconType"], LucideIcon> = {
   home: Home,
   projects: FolderOpen,
   experience: Briefcase,
@@ -37,64 +36,58 @@ const iconMap: Record<TrailPinData["iconType"], LucideIcon> = {
   contact: Mail,
 };
 
-export function TrailPin({ data, isVisited, onClick, index }: TrailPinProps) {
+export function SectionCard({ data, isVisited, onClick, index }: SectionCardProps) {
   const { prefersReducedMotion } = useTheme();
   const Icon = iconMap[data.iconType];
   
   return (
     <motion.div
-      className="absolute z-10"
-      style={{
-        left: `${data.position.x}%`,
-        top: `${data.position.y}%`,
-        transform: "translate(-50%, -50%)",
-      }}
-      initial={prefersReducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
+      initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={
         prefersReducedMotion
           ? { duration: 0 }
           : {
-              delay: 0.8 + index * 0.1,
+              delay: 0.1 + index * 0.08,
               type: "spring",
               stiffness: 300,
               damping: 25,
             }
       }
-      data-testid={`trail-pin-${data.id}`}
+      data-testid={`section-card-${data.id}`}
     >
       <motion.button
         onClick={onClick}
-        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg"
-        whileHover={prefersReducedMotion ? {} : { scale: 1.03, y: -2 }}
+        className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl"
+        whileHover={prefersReducedMotion ? {} : { scale: 1.02, y: -2 }}
         whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
         aria-label={`${data.label} - ${data.sublabel}${isVisited ? " (visited)" : ""}`}
-        data-testid={`button-pin-${data.id}`}
+        data-testid={`button-section-${data.id}`}
       >
         <Card 
           className={`
-            relative p-3 min-w-[140px] cursor-pointer
+            relative p-4 cursor-pointer overflow-hidden
             transition-all duration-200
             hover-elevate
             ${isVisited 
-              ? "bg-primary/10 border-primary/30" 
-              : "bg-card/95 backdrop-blur-sm border-border/60"
+              ? "bg-primary/5 border-primary/20" 
+              : "bg-card/80 backdrop-blur-sm border-border/50"
             }
           `}
           style={{
             boxShadow: isVisited
-              ? "0 4px 16px -4px hsl(var(--primary) / 0.25)"
-              : "0 4px 12px -4px hsl(var(--foreground) / 0.1)",
+              ? "0 4px 20px -4px hsl(var(--primary) / 0.15)"
+              : "0 4px 16px -4px hsl(var(--foreground) / 0.08)",
           }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div 
               className={`
-                flex-shrink-0 w-9 h-9 rounded-md flex items-center justify-center
+                flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center
                 transition-colors duration-200
                 ${isVisited 
                   ? "bg-primary text-primary-foreground" 
-                  : "bg-muted text-muted-foreground"
+                  : "bg-muted/80 text-muted-foreground"
                 }
               `}
             >
@@ -104,23 +97,23 @@ export function TrailPin({ data, isVisited, onClick, index }: TrailPinProps) {
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Check className="w-4 h-4" strokeWidth={3} />
+                  <Check className="w-5 h-5" strokeWidth={3} />
                 </motion.div>
               ) : (
-                <Icon className="w-4 h-4" />
+                <Icon className="w-5 h-5" />
               )}
             </div>
             
-            <div className="flex-1 text-left min-w-0">
-              <p className={`text-sm font-medium truncate ${isVisited ? "text-primary" : "text-foreground"}`}>
+            <div className="flex-1 min-w-0">
+              <p className={`text-base font-semibold ${isVisited ? "text-primary" : "text-foreground"}`}>
                 {data.label}
               </p>
-              <p className="text-xs text-muted-foreground truncate">
+              <p className="text-sm text-muted-foreground">
                 {data.sublabel}
               </p>
             </div>
             
-            <ChevronRight className={`w-4 h-4 flex-shrink-0 ${isVisited ? "text-primary/60" : "text-muted-foreground/50"}`} />
+            <ChevronRight className={`w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1 ${isVisited ? "text-primary/60" : "text-muted-foreground/40"}`} />
           </div>
         </Card>
       </motion.button>

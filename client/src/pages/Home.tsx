@@ -1,13 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 import { MapPin, Briefcase } from "lucide-react";
 import { TopoBackground } from "@/components/TopoBackground";
-import { TrailPath, TRAIL_POINTS } from "@/components/TrailPath";
-import { TrailPin, type TrailPinData } from "@/components/TrailPin";
-import { MobileTrailList } from "@/components/MobileTrailList";
+import { SectionCard, type SectionCardData } from "@/components/SectionCard";
 import { TrailProgress, useTrailProgress } from "@/components/TrailProgress";
 import { useTheme } from "@/components/ThemeProvider";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { getProfile } from "@/lib/content";
 import {
   Drawer,
@@ -19,48 +17,42 @@ import {
 import { Button } from "@/components/ui/button";
 import { RecruiterPacketTrigger } from "@/components/RecruiterPacketTrigger";
 
-const TRAIL_STOPS: TrailPinData[] = [
+const SECTIONS: SectionCardData[] = [
   {
     id: "home",
     label: "About",
     sublabel: "Learn about me",
     iconType: "home",
-    position: { x: TRAIL_POINTS[0].x, y: TRAIL_POINTS[0].y },
   },
   {
     id: "projects",
     label: "Projects",
     sublabel: "View my work",
     iconType: "projects",
-    position: { x: TRAIL_POINTS[1].x, y: TRAIL_POINTS[1].y },
   },
   {
     id: "experience",
     label: "Experience",
     sublabel: "Career history",
     iconType: "experience",
-    position: { x: TRAIL_POINTS[2].x, y: TRAIL_POINTS[2].y },
   },
   {
     id: "skills",
     label: "Skills",
     sublabel: "Technical abilities",
     iconType: "skills",
-    position: { x: TRAIL_POINTS[3].x, y: TRAIL_POINTS[3].y },
   },
   {
     id: "interests",
     label: "Interests",
     sublabel: "Beyond code",
     iconType: "interests",
-    position: { x: TRAIL_POINTS[4].x, y: TRAIL_POINTS[4].y },
   },
   {
     id: "contact",
     label: "Contact",
     sublabel: "Get in touch",
     iconType: "contact",
-    position: { x: TRAIL_POINTS[5].x, y: TRAIL_POINTS[5].y },
   },
 ];
 
@@ -97,11 +89,20 @@ const DRAWER_CONTENT: Record<string, { title: string; description: string; actio
   },
 };
 
+const SECTION_ROUTES: Record<string, string> = {
+  home: "/about",
+  projects: "/projects",
+  experience: "/experience",
+  skills: "/skills",
+  interests: "/interests",
+  contact: "/contact",
+};
+
 export default function Home() {
   const { prefersReducedMotion } = useTheme();
-  const isMobile = useIsMobile();
+  const [, setLocation] = useLocation();
   const profile = getProfile();
-  const { visited, markVisited, isVisited } = useTrailProgress();
+  const { markVisited, isVisited } = useTrailProgress();
   
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedStop, setSelectedStop] = useState<string | null>(null);
@@ -116,6 +117,16 @@ export default function Home() {
     setDrawerOpen(false);
     setTimeout(() => setSelectedStop(null), 300);
   }, []);
+  
+  const handleDrawerAction = useCallback(() => {
+    if (selectedStop) {
+      const route = SECTION_ROUTES[selectedStop];
+      if (route) {
+        setDrawerOpen(false);
+        setLocation(route);
+      }
+    }
+  }, [selectedStop, setLocation]);
   
   useEffect(() => {
     markVisited("home");
@@ -188,49 +199,41 @@ export default function Home() {
           </motion.div>
         </section>
         
-        {isMobile ? (
-          <section className="relative py-8">
+        <section className="relative py-8 sm:py-12">
+          <div className="container mx-auto px-4">
             <motion.div
-              className="text-center mb-6 px-4"
+              className="text-center mb-8"
               initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.5, duration: 0.4 }}
             >
-              <h2 className="text-xl font-semibold text-foreground mb-2">
+              <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
                 Explore My Portfolio
               </h2>
-              <p className="text-sm text-muted-foreground">
-                Tap each section to discover more
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Click each section to learn more
               </p>
             </motion.div>
             
-            <div className="pb-4 px-4 mb-4">
+            <div className="sm:hidden pb-4 mb-4">
               <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-3 mx-auto max-w-md">
                 <TrailProgress />
               </div>
             </div>
             
-            <MobileTrailList
-              stops={TRAIL_STOPS}
-              visitedStops={visited}
-              onStopClick={handlePinClick}
-            />
-          </section>
-        ) : (
-          <section className="relative h-[60vh] min-h-[500px]">
-            <TrailPath />
-            
-            {TRAIL_STOPS.map((stop, index) => (
-              <TrailPin
-                key={stop.id}
-                data={stop}
-                isVisited={isVisited(stop.id as any)}
-                onClick={() => handlePinClick(stop.id)}
-                index={index}
-              />
-            ))}
-          </section>
-        )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {SECTIONS.map((section, index) => (
+                <SectionCard
+                  key={section.id}
+                  data={section}
+                  isVisited={isVisited(section.id as any)}
+                  onClick={() => handlePinClick(section.id)}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
         
         <section className="relative py-16 px-4">
           <motion.div
@@ -285,7 +288,7 @@ export default function Home() {
                 <Button 
                   size="lg" 
                   className="w-full"
-                  onClick={closeDrawer}
+                  onClick={handleDrawerAction}
                   data-testid="button-drawer-action"
                 >
                   {selectedContent?.action}
