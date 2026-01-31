@@ -105,10 +105,6 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <div className="hidden md:block">
-                <TrailProgress />
-              </div>
-
               <CommandPaletteTrigger onClick={() => setCommandOpen(true)} />
 
               <DropdownMenu>

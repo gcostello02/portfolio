@@ -1,19 +1,12 @@
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
 import { MapPin, Briefcase } from "lucide-react";
 import { TopoBackground } from "@/components/TopoBackground";
 import { SectionCard, type SectionCardData } from "@/components/SectionCard";
-import { TrailProgress, useTrailProgress } from "@/components/TrailProgress";
+import { useTrailProgress } from "@/components/TrailProgress";
 import { useTheme } from "@/components/ThemeProvider";
 import { getProfile } from "@/lib/content";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { RecruiterPacketTrigger } from "@/components/RecruiterPacketTrigger";
 
@@ -56,39 +49,6 @@ const SECTIONS: SectionCardData[] = [
   },
 ];
 
-const DRAWER_CONTENT: Record<string, { title: string; description: string; action: string }> = {
-  home: {
-    title: "About Me",
-    description: "Learn about my background, education, and what drives me as a software engineer.",
-    action: "Learn More",
-  },
-  projects: {
-    title: "My Projects",
-    description: "Explore the applications and systems I've built. Each project showcases different skills and technologies.",
-    action: "View Projects",
-  },
-  experience: {
-    title: "Work Experience",
-    description: "See my professional journey from internships to my current role as a software engineer.",
-    action: "View Experience",
-  },
-  skills: {
-    title: "Technical Skills",
-    description: "Languages, frameworks, and tools I've mastered throughout my career.",
-    action: "View Skills",
-  },
-  interests: {
-    title: "Beyond Code",
-    description: "Discover my passions outside of software development - sports, teaching, and community involvement.",
-    action: "View Interests",
-  },
-  contact: {
-    title: "Get in Touch",
-    description: "Ready to connect? Let's start a conversation about opportunities.",
-    action: "Contact Me",
-  },
-};
-
 const SECTION_ROUTES: Record<string, string> = {
   home: "/about",
   projects: "/projects",
@@ -104,45 +64,22 @@ export default function Home() {
   const profile = getProfile();
   const { markVisited, isVisited } = useTrailProgress();
   
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedStop, setSelectedStop] = useState<string | null>(null);
-  
-  const handlePinClick = useCallback((stopId: string) => {
+  const handleCardClick = useCallback((stopId: string) => {
     markVisited(stopId as any);
-    setSelectedStop(stopId);
-    setDrawerOpen(true);
-  }, [markVisited]);
-  
-  const closeDrawer = useCallback(() => {
-    setDrawerOpen(false);
-    setTimeout(() => setSelectedStop(null), 300);
-  }, []);
-  
-  const handleDrawerAction = useCallback(() => {
-    if (selectedStop) {
-      const route = SECTION_ROUTES[selectedStop];
-      if (route) {
-        setDrawerOpen(false);
-        setLocation(route);
-      }
+    const route = SECTION_ROUTES[stopId];
+    if (route) {
+      setLocation(route);
     }
-  }, [selectedStop, setLocation]);
+  }, [markVisited, setLocation]);
   
   useEffect(() => {
     markVisited("home");
   }, [markVisited]);
   
-  const selectedContent = selectedStop ? DRAWER_CONTENT[selectedStop] : null;
-  
   return (
     <div className="relative min-h-screen overflow-hidden" data-testid="home-page">
       <TopoBackground />
       
-      <div className="fixed top-20 right-4 z-50 hidden sm:block">
-        <div className="bg-card/80 backdrop-blur-md border border-border/50 rounded-lg p-3 shadow-lg">
-          <TrailProgress />
-        </div>
-      </div>
       
       <div className="relative z-10">
         <section className="min-h-[40vh] sm:min-h-[35vh] flex flex-col items-center justify-center px-4 pt-8 pb-4 sm:pt-12">
@@ -215,11 +152,6 @@ export default function Home() {
               </p>
             </motion.div>
             
-            <div className="sm:hidden pb-4 mb-4">
-              <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-3 mx-auto max-w-md">
-                <TrailProgress />
-              </div>
-            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
               {SECTIONS.map((section, index) => (
@@ -227,7 +159,7 @@ export default function Home() {
                   key={section.id}
                   data={section}
                   isVisited={isVisited(section.id as any)}
-                  onClick={() => handlePinClick(section.id)}
+                  onClick={() => handleCardClick(section.id)}
                   index={index}
                 />
               ))}
@@ -252,7 +184,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button 
                 size="lg"
-                onClick={() => handlePinClick("projects")}
+                onClick={() => handleCardClick("projects")}
                 data-testid="button-view-projects"
               >
                 View Projects
@@ -260,7 +192,7 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 size="lg"
-                onClick={() => handlePinClick("contact")}
+                onClick={() => handleCardClick("contact")}
                 data-testid="button-contact"
               >
                 Get in Touch
@@ -271,42 +203,6 @@ export default function Home() {
       </div>
       
       <RecruiterPacketTrigger />
-      
-      <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
-        <DrawerContent data-testid="trail-drawer">
-          <div className="mx-auto w-full max-w-lg">
-            <DrawerHeader className="text-center">
-              <DrawerTitle className="text-2xl">
-                {selectedContent?.title}
-              </DrawerTitle>
-              <DrawerDescription className="text-base mt-2">
-                {selectedContent?.description}
-              </DrawerDescription>
-            </DrawerHeader>
-            <div className="p-6 pt-0">
-              <div className="flex flex-col gap-3">
-                <Button 
-                  size="lg" 
-                  className="w-full"
-                  onClick={handleDrawerAction}
-                  data-testid="button-drawer-action"
-                >
-                  {selectedContent?.action}
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="w-full"
-                  onClick={closeDrawer}
-                  data-testid="button-drawer-close"
-                >
-                  Keep Browsing
-                </Button>
-              </div>
-            </div>
-          </div>
-        </DrawerContent>
-      </Drawer>
     </div>
   );
 }

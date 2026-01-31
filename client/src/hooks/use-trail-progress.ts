@@ -42,6 +42,12 @@ function saveProgress(progress: TrailProgress): void {
   }
 }
 
+const PROGRESS_UPDATE_EVENT = "trailProgressUpdate";
+
+function dispatchProgressUpdate() {
+  window.dispatchEvent(new CustomEvent(PROGRESS_UPDATE_EVENT));
+}
+
 export function useTrailProgress() {
   const [progress, setProgress] = useState<TrailProgress>(() =>
     getStoredProgress()
@@ -50,6 +56,21 @@ export function useTrailProgress() {
   useEffect(() => {
     const stored = getStoredProgress();
     setProgress(stored);
+  }, []);
+
+  useEffect(() => {
+    const handleProgressUpdate = () => {
+      const stored = getStoredProgress();
+      setProgress(stored);
+    };
+
+    window.addEventListener(PROGRESS_UPDATE_EVENT, handleProgressUpdate);
+    window.addEventListener("storage", handleProgressUpdate);
+
+    return () => {
+      window.removeEventListener(PROGRESS_UPDATE_EVENT, handleProgressUpdate);
+      window.removeEventListener("storage", handleProgressUpdate);
+    };
   }, []);
 
   const markVisited = useCallback((stopId: TrailStopId) => {
@@ -62,6 +83,7 @@ export function useTrailProgress() {
         lastVisit: new Date().toISOString(),
       };
       saveProgress(newProgress);
+      dispatchProgressUpdate();
       return newProgress;
     });
   }, []);

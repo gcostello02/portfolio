@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
+import { TrailProgress } from "@/components/TrailProgress";
 import Home from "@/pages/Home";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ExperiencePage from "@/pages/ExperiencePage";
@@ -43,6 +44,11 @@ function App() {
             <main className="pt-16">
               <Router />
             </main>
+            <div className="fixed bottom-4 right-4 z-50">
+              <div className="bg-card/90 backdrop-blur-md border border-border/50 rounded-lg p-3 shadow-lg">
+                <TrailProgress />
+              </div>
+            </div>
           </div>
           <Toaster />
         </TooltipProvider>
