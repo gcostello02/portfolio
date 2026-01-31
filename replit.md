@@ -43,10 +43,12 @@ The `client/src/lib/content.ts` module provides typed accessors for all content 
 - **Theme System**: CSS variables with light/dark mode toggle, persisted to localStorage
 - **Responsive Design**: Mobile-first with `useIsMobile` hook for breakpoint detection
 - **Accessibility**: ARIA labels, keyboard navigation, reduced motion support
+- **SEO Optimization**: Each page has unique meta tags, Open Graph, Twitter cards, and JSON-LD structured data via the `SEO` component
+- **Page Prefetching**: Homepage prefetches all linked pages using `<link rel="prefetch">` with 24-hour cache expiration stored in localStorage
 
 ### Route Structure
 - `/` - Trail map home page
-- `/about`, `/projects`, `/experience`, `/skills`, `/interests`, `/contact` - Section pages
+- `/education`, `/projects`, `/experience`, `/skills`, `/interests`, `/contact` - Section pages
 - `/outpost` - Mini-apps launchpad hub
 - `/apps/:slug` - Dynamic app runner (supports internal, external, and iframe modes)
 

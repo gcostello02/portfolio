@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { InterestsSection } from "@/components/sections/InterestsSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
+import { SEO } from "@/components/SEO";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -22,11 +23,16 @@ export default function InterestsPage() {
 
   useEffect(() => {
     markVisited("interests");
-    document.title = "Interests - Grant Costello";
   }, [markVisited]);
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title="Interests"
+        description="Beyond software development - my passions and hobbies including sports, teaching, and activities that keep me balanced and inspired."
+        path="/interests"
+      />
+      <motion.div
       className="min-h-screen bg-background"
       variants={pageVariants}
       initial="initial"
@@ -84,5 +90,6 @@ export default function InterestsPage() {
         <InterestsSection />
       </section>
     </motion.div>
+    </>
   );
 }

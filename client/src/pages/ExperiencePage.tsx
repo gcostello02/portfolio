@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
+import { SEO } from "@/components/SEO";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -22,11 +23,16 @@ export default function ExperiencePage() {
 
   useEffect(() => {
     markVisited("experience");
-    document.title = "Experience - Grant Costello";
   }, [markVisited]);
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title="Experience"
+        description="My professional journey in software engineering. From internships to full-time roles, explore my work history and career growth in the tech industry."
+        path="/experience"
+      />
+      <motion.div
       className="min-h-screen bg-background"
       variants={pageVariants}
       initial="initial"
@@ -84,5 +90,6 @@ export default function ExperiencePage() {
         <ExperienceSection />
       </section>
     </motion.div>
+    </>
   );
 }

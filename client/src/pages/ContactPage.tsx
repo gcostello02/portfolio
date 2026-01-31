@@ -5,6 +5,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
+import { SEO } from "@/components/SEO";
+import { getProfile } from "@/lib/content";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -19,14 +21,20 @@ const heroVariants = {
 
 export default function ContactPage() {
   const { markVisited } = useTrailProgress();
+  const profile = getProfile();
 
   useEffect(() => {
     markVisited("contact");
-    document.title = "Contact - Grant Costello";
   }, [markVisited]);
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title="Contact"
+        description={`Get in touch with ${profile.name}. Connect via email, LinkedIn, or GitHub. Open to discussing opportunities and collaboration.`}
+        path="/contact"
+      />
+      <motion.div
       className="min-h-screen bg-background"
       variants={pageVariants}
       initial="initial"
@@ -97,5 +105,6 @@ export default function ContactPage() {
         </div>
       </section>
     </motion.div>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
 import { getEducation } from "@/lib/content";
+import { SEO } from "@/components/SEO";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -26,12 +27,14 @@ export default function EducationPage() {
     markVisited("education");
   }, []);
 
-  useEffect(() => {
-    document.title = `Education - ${education.school}`;
-  }, [education.school]);
-
   return (
-    <motion.div
+    <>
+      <SEO
+        title="Education"
+        description={`${education.school} - ${education.degrees.map(d => `${d.type} in ${d.field}`).join(" & ")}. Class of ${education.graduationYear}. View coursework and skills.`}
+        path="/education"
+      />
+      <motion.div
       className="min-h-screen bg-background"
       variants={pageVariants}
       initial="initial"
@@ -90,5 +93,6 @@ export default function EducationPage() {
         </div>
       </section>
     </motion.div>
+    </>
   );
 }

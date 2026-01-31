@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
+import { SEO } from "@/components/SEO";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -22,11 +23,16 @@ export default function SkillsPage() {
 
   useEffect(() => {
     markVisited("skills");
-    document.title = "Skills - Grant Costello";
   }, [markVisited]);
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title="Skills"
+        description="Technical skills and expertise in programming languages, frameworks, and tools. From React and TypeScript to Python and cloud technologies."
+        path="/skills"
+      />
+      <motion.div
       className="min-h-screen bg-background"
       variants={pageVariants}
       initial="initial"
@@ -84,5 +90,6 @@ export default function SkillsPage() {
         <SkillsSection />
       </section>
     </motion.div>
+    </>
   );
 }

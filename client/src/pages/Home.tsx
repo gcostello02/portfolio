@@ -8,6 +8,8 @@ import { useTrailProgress } from "@/components/TrailProgress";
 import { useTheme } from "@/components/ThemeProvider";
 import { getProfile } from "@/lib/content";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
+import { usePrefetch } from "@/hooks/use-prefetch";
 
 const SECTIONS: SectionCardData[] = [
   {
@@ -71,12 +73,16 @@ export default function Home() {
     }
   }, [markVisited, setLocation]);
   
-  useEffect(() => {
-    document.title = `${profile.name} - Portfolio`;
-  }, [profile.name]);
+  usePrefetch(true);
   
   return (
-    <div className="relative min-h-screen overflow-hidden" data-testid="home-page">
+    <>
+      <SEO
+        title="Home"
+        description={`${profile.name} - ${profile.title}. ${profile.tagline}. Explore my portfolio including projects, experience, skills, and education.`}
+        path="/"
+      />
+      <div className="relative min-h-screen overflow-hidden" data-testid="home-page">
       <TopoBackground />
       
       
@@ -202,5 +208,6 @@ export default function Home() {
       </div>
       
     </div>
+    </>
   );
 }
