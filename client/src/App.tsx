@@ -44,7 +44,7 @@ function App() {
             <main className="pt-16">
               <Router />
             </main>
-            <div className="fixed bottom-4 right-4 z-50">
+            <div className="fixed top-20 right-4 z-50">
               <div className="bg-card/90 backdrop-blur-md border border-border/50 rounded-lg p-3 shadow-lg">
                 <TrailProgress />
               </div>
