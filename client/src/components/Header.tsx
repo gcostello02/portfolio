@@ -32,6 +32,7 @@ import { TrailProgress } from "./TrailProgress";
 
 const NAV_LINKS = [
   { label: "Home", path: "/" },
+  { label: "Education", path: "/education" },
   { label: "Experience", path: "/experience" },
   { label: "Projects", path: "/projects" },
   { label: "Skills", path: "/skills" },

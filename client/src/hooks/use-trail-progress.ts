@@ -4,7 +4,7 @@ const STORAGE_KEY = "trailProgress";
 const UNLOCK_THRESHOLD = 3;
 
 export const TRAIL_STOPS = [
-  { id: "home", label: "About", path: "/" },
+  { id: "education", label: "Education", path: "/education" },
   { id: "experience", label: "Experience", path: "/experience" },
   { id: "projects", label: "Projects", path: "/projects" },
   { id: "skills", label: "Skills", path: "/skills" },

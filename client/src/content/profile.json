@@ -10,30 +10,5 @@
     "personal": "gcostello02",
     "work": "gcostello02-tpv"
   },
-  "linkedin": "linkedin.com/in/grant-costello",
-  "education": {
-    "school": "University of Virginia",
-    "schoolShort": "UVA",
-    "degrees": [
-      {
-        "type": "Bachelor of Science",
-        "field": "Computer Science",
-        "college": "School of Engineering & Applied Sciences"
-      },
-      {
-        "type": "Bachelor of Arts",
-        "field": "Economics"
-      }
-    ],
-    "location": "Charlottesville, VA",
-    "graduationYear": 2025,
-    "graduationDate": "May 2025",
-    "gpa": 3.3,
-    "coursework": [
-      "Advanced Software Development",
-      "Data Structures & Algorithms II",
-      "Artificial Intelligence",
-      "Web Applications"
-    ]
-  }
+  "linkedin": "linkedin.com/in/grant-costello"
 }

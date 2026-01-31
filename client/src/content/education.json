@@ -1,0 +1,45 @@
+{
+  "school": "University of Virginia",
+  "schoolShort": "UVA",
+  "degrees": [
+    {
+      "type": "Bachelor of Science",
+      "field": "Computer Science",
+      "college": "School of Engineering & Applied Sciences"
+    },
+    {
+      "type": "Bachelor of Arts",
+      "field": "Economics"
+    }
+  ],
+  "location": "Charlottesville, VA",
+  "graduationYear": 2025,
+  "graduationDate": "May 2025",
+  "gpa": 3.3,
+  "courses": [
+    {
+      "name": "Advanced Software Development",
+      "code": "CS 3240",
+      "description": "Full-stack web development with agile methodologies and team collaboration",
+      "skills": ["Django", "Python", "PostgreSQL", "Git", "Agile", "CI/CD"]
+    },
+    {
+      "name": "Data Structures & Algorithms II",
+      "code": "CS 3100",
+      "description": "Advanced algorithms, complexity analysis, and optimization techniques",
+      "skills": ["Java", "Algorithms", "Data Structures", "Problem Solving"]
+    },
+    {
+      "name": "Artificial Intelligence",
+      "code": "CS 4710",
+      "description": "Machine learning, neural networks, and intelligent agent design",
+      "skills": ["Python", "Machine Learning", "Neural Networks", "AI"]
+    },
+    {
+      "name": "Web Applications",
+      "code": "CS 4640",
+      "description": "Modern web development with frontend frameworks and RESTful APIs",
+      "skills": ["JavaScript", "React", "Node.js", "REST APIs", "HTML/CSS"]
+    }
+  ]
+}

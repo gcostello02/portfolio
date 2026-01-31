@@ -1,5 +1,5 @@
 import {
-  Home,
+  GraduationCap,
   Briefcase,
   FolderGit2,
   Wrench,
@@ -17,7 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  AboutSection,
+  EducationSection,
   ProjectsSection,
   ExperienceSection,
   SkillsSection,
@@ -38,17 +38,17 @@ const SECTION_CONFIG: Record<
   {
     title: string;
     description: string;
-    icon: typeof Home;
+    icon: typeof GraduationCap;
     route: string;
     component: () => JSX.Element;
   }
 > = {
-  home: {
-    title: "About",
-    description: "Learn more about Grant Costello",
-    icon: Home,
-    route: "/about",
-    component: AboutSection,
+  education: {
+    title: "Education",
+    description: "Degrees and coursework",
+    icon: GraduationCap,
+    route: "/education",
+    component: EducationSection,
   },
   projects: {
     title: "Projects",

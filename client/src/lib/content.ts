@@ -4,6 +4,14 @@ import projectsData from "@/content/projects.json";
 import skillsData from "@/content/skills.json";
 import interestsData from "@/content/interests.json";
 import appsData from "@/content/apps.json";
+import educationData from "@/content/education.json";
+
+export interface Course {
+  name: string;
+  code: string;
+  description: string;
+  skills: string[];
+}
 
 export interface Education {
   school: string;
@@ -17,7 +25,7 @@ export interface Education {
   graduationYear: number;
   graduationDate: string;
   gpa: number;
-  coursework: string[];
+  courses: Course[];
 }
 
 export interface Profile {
@@ -33,7 +41,6 @@ export interface Profile {
     work: string;
   };
   linkedin: string;
-  education: Education;
 }
 
 export interface Experience {
@@ -132,6 +139,10 @@ export function getInterests(): Interests {
   return interestsData as Interests;
 }
 
+export function getEducation(): Education {
+  return educationData as Education;
+}
+
 export function getApps(): App[] {
   return appsData as App[];
 }
@@ -146,6 +157,7 @@ export function getAllSearchableContent() {
   const projects = getProjects();
   const skills = getSkills();
   const interests = getInterests();
+  const education = getEducation();
 
   return {
     profile,
@@ -153,5 +165,6 @@ export function getAllSearchableContent() {
     projects,
     skills,
     interests,
+    education,
   };
 }

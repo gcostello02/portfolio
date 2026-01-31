@@ -11,10 +11,10 @@ import { Button } from "@/components/ui/button";
 
 const SECTIONS: SectionCardData[] = [
   {
-    id: "home",
-    label: "About",
-    sublabel: "Learn about me",
-    iconType: "home",
+    id: "education",
+    label: "Education",
+    sublabel: "Degrees & Courses",
+    iconType: "education",
   },
   {
     id: "projects",
@@ -49,7 +49,7 @@ const SECTIONS: SectionCardData[] = [
 ];
 
 const SECTION_ROUTES: Record<string, string> = {
-  home: "/about",
+  education: "/education",
   projects: "/projects",
   experience: "/experience",
   skills: "/skills",
@@ -72,8 +72,8 @@ export default function Home() {
   }, [markVisited, setLocation]);
   
   useEffect(() => {
-    markVisited("home");
-  }, [markVisited]);
+    document.title = `${profile.name} - Portfolio`;
+  }, [profile.name]);
   
   return (
     <div className="relative min-h-screen overflow-hidden" data-testid="home-page">

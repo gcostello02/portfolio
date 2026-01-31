@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { 
-  Home, 
+  GraduationCap, 
   FolderOpen, 
   Briefcase, 
   Code, 
@@ -17,7 +17,7 @@ export interface SectionCardData {
   id: string;
   label: string;
   sublabel: string;
-  iconType: "home" | "projects" | "experience" | "skills" | "interests" | "contact";
+  iconType: "education" | "projects" | "experience" | "skills" | "interests" | "contact";
 }
 
 interface SectionCardProps {
@@ -28,7 +28,7 @@ interface SectionCardProps {
 }
 
 const iconMap: Record<SectionCardData["iconType"], LucideIcon> = {
-  home: Home,
+  education: GraduationCap,
   projects: FolderOpen,
   experience: Briefcase,
   skills: Code,

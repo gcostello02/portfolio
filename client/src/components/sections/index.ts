@@ -1,4 +1,4 @@
-export { AboutSection } from "./AboutSection";
+export { EducationSection } from "./EducationSection";
 export { ProjectsSection } from "./ProjectsSection";
 export { ExperienceSection } from "./ExperienceSection";
 export { SkillsSection } from "./SkillsSection";

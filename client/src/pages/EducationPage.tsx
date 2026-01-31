@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Layers, User, Home } from "lucide-react";
+import { ArrowLeft, Layers, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { AboutSection } from "@/components/sections/AboutSection";
+import { EducationSection } from "@/components/sections/EducationSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
-import { getProfile } from "@/lib/content";
+import { getEducation } from "@/lib/content";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -18,14 +18,17 @@ const heroVariants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1 } },
 };
 
-export default function AboutPage() {
+export default function EducationPage() {
   const { markVisited } = useTrailProgress();
-  const profile = getProfile();
+  const education = getEducation();
 
   useEffect(() => {
-    markVisited("home");
-    document.title = `About ${profile.name}`;
-  }, [markVisited, profile.name]);
+    markVisited("education");
+  }, []);
+
+  useEffect(() => {
+    document.title = `Education - ${education.school}`;
+  }, [education.school]);
 
   return (
     <motion.div
@@ -34,7 +37,7 @@ export default function AboutPage() {
       initial="initial"
       animate="animate"
       exit="exit"
-      data-testid="about-page"
+      data-testid="education-page"
     >
       <section className="relative py-10 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
@@ -67,15 +70,15 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-primary/10">
-                <Home className="h-6 w-6 text-primary" />
+                <GraduationCap className="h-6 w-6 text-primary" />
               </div>
-              <span className="text-sm font-medium text-primary">About Me</span>
+              <span className="text-sm font-medium text-primary">Education</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              {profile.name}
+              {education.school}
             </h1>
             <p className="text-lg text-muted-foreground">
-              {profile.title} - {profile.tagline}
+              {education.degrees.map(d => `${d.type} in ${d.field}`).join(" & ")} - {education.graduationDate}
             </p>
           </motion.div>
         </div>
@@ -83,7 +86,7 @@ export default function AboutPage() {
 
       <section className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">
-          <AboutSection />
+          <EducationSection />
         </div>
       </section>
     </motion.div>

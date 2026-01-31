@@ -13,7 +13,7 @@ import ExperiencePage from "@/pages/ExperiencePage";
 import SkillsPage from "@/pages/SkillsPage";
 import InterestsPage from "@/pages/InterestsPage";
 import ContactPage from "@/pages/ContactPage";
-import AboutPage from "@/pages/AboutPage";
+import EducationPage from "@/pages/EducationPage";
 import OutpostPage from "@/pages/OutpostPage";
 import AppRunner from "@/pages/AppRunner";
 import NotFound from "@/pages/not-found";
@@ -27,7 +27,7 @@ function Router() {
       <Route path="/skills" component={SkillsPage} />
       <Route path="/interests" component={InterestsPage} />
       <Route path="/contact" component={ContactPage} />
-      <Route path="/about" component={AboutPage} />
+      <Route path="/education" component={EducationPage} />
       <Route path="/outpost" component={OutpostPage} />
       <Route path="/apps/:slug" component={AppRunner} />
       <Route component={NotFound} />
