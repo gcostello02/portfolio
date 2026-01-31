@@ -1,0 +1,76 @@
+Build me a polished, modern portfolio website with a “Blue Ridge Trails” mountain theme (Charlottesville / UVA vibe). The theme should feel like a premium outdoor brand + modern product UI: topo lines, trails, mountain silhouettes, subtle parallax, icons, smooth animations. Gamification should be subtle (exploration/checkmarks) and never the main point. You have creative freedom on exact design choices as long as it’s clean, readable, and cohesive.
+
+STACK
+- React + Vite + TypeScript
+- Tailwind CSS
+- Framer Motion (animations)
+- lucide-react (icons)
+- React Router
+- Accessible + responsive + prefers-reduced-motion support
+
+CORE UX / THEME
+- Home page is a stylized “Trail Map” (topo background + a main trail path).
+- 6 clickable “trail stops” (pins) along the path. Hover shows a tooltip preview (desktop). Click opens a polished right-side drawer (“Trail Card”) with that section’s content.
+- On mobile: use a clean list of stops instead of hover interactions.
+- Add tasteful micro-interactions (hover lift, subtle glow, smooth transitions). You can choose exact motion/visual style.
+
+SECTIONS (trail stops)
+- Trailhead (Home/About)
+- Overlook (Featured Projects)
+- Ridgeline (Experience)
+- Switchbacks (Skills)
+- Campfire (Interests: include basketball + other interests)
+- Summit (Contact)
+
+SUBTLE GAMIFICATION
+- Small “Trail Journal” widget: “Visited X/6” checkmarks saved in localStorage.
+- After visiting 3 stops, reveal “Recruiter Packet” button/modal with: resume link + top highlights + GitHub/LinkedIn links.
+
+CONTENT LAYER (IMPORTANT)
+Do NOT hardcode content in components. Create editable files in src/content/:
+- profile.json, experience.json, projects.json, skills.json, interests.json, apps.json
+UI should render from these files. Use best-effort consolidation from any uploaded resume/LinkedIn PDF/data. If parsing is hard, create reasonable starter content and structure it cleanly for me to edit.
+
+PROJECTS + MEDIA
+- Projects must support optional images/videos:
+  - thumbnail strip + lightbox modal
+  - native <video controls> where possible
+  - each project has links (demo + GitHub)
+
+FUTURE APPS / GAMES
+Add routes so I can plug in mini apps later:
+- /outpost (Launchpad hub reading apps.json)
+- /apps/:slug (placeholder app runner route)
+Each app supports mode: internal route, external link, or embedded iframe wrapper.
+
+GITHUB
+I have two GitHub accounts:
+- Personal: gcostello02
+- Work: gcostello02-tpv
+Show both (header/contact). Optionally add a small toggle for which repos/links to emphasize.
+
+RESUME
+- Put resume at public/resume.pdf
+- Add Resume buttons (open/download)
+- Include resume in Recruiter Packet modal
+
+REQUIRED ROUTES
+/ (Trail Map)
+/projects
+/experience
+/skills
+/interests
+/outpost
+/apps/:slug
+/contact
+
+ACCEPTANCE CRITERIA
+1) Trail Map with topo/mountain styling + animated trail path
+2) Pins open drawer with correct content
+3) Visited progress persists; Recruiter Packet unlock after 3 stops
+4) Projects gallery works (even if empty now)
+5) Outpost reads apps.json; /apps/:slug works
+6) Command Palette (Ctrl+K) to navigate + search content
+7) Responsive, accessible, reduced-motion support
+
+You have freedom to choose typography, colors, spacing, and animation style as long as it matches the Blue Ridge Trails theme, feels premium, and keeps text highly readable over the background.
