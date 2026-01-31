@@ -1,0 +1,20 @@
+[
+  {
+    "id": "matrix-madness-demo",
+    "slug": "matrix-madness",
+    "name": "Matrix Madness",
+    "description": "Interactive college basketball statistics explorer",
+    "icon": "activity",
+    "mode": "internal",
+    "url": null
+  },
+  {
+    "id": "code-challenges",
+    "slug": "challenges",
+    "name": "Code Challenges",
+    "description": "Practice coding problems and algorithmic thinking",
+    "icon": "code",
+    "mode": "internal",
+    "url": null
+  }
+]

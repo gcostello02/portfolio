@@ -1,0 +1,34 @@
+[
+  {
+    "id": "matrix-madness",
+    "title": "Matrix Madness Web Application",
+    "description": "A full-stack web application for college basketball player data and statistics. Built with a database-driven architecture for efficient storage and retrieval of player data through API calls.",
+    "longDescription": [
+      "Developed a full-stack web application using React.js for the frontend and Node.js, Express.js, and MongoDB for the backend",
+      "Implemented a database-driven architecture, efficiently storing and retrieving college basketball player data through API calls",
+      "Applied Styled Components for modular design, enhancing the maintainability and styling consistency of the application"
+    ],
+    "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "Styled Components"],
+    "githubUrl": null,
+    "demoUrl": null,
+    "media": [],
+    "featured": true,
+    "dates": "Fall 2023 - Spring 2024"
+  },
+  {
+    "id": "hoos-hunt",
+    "title": "Hoos Hunt Web Application",
+    "description": "An interactive scavenger hunt web application with gamified elements and real-time location tracking. Built collaboratively with Google Maps integration for answer verification.",
+    "longDescription": [
+      "Collaborated in a team to design and develop an interactive scavenger hunt web application, enhancing user engagement with gamified elements",
+      "Integrated Google Maps API for real-time location tracking and answer verification, improving user experience and functionality",
+      "Employed Django for the backend and PostgreSQL for data management, using the Bootstrap library for responsive styling"
+    ],
+    "technologies": ["Django", "PostgreSQL", "Google Maps API", "Bootstrap", "Python"],
+    "githubUrl": null,
+    "demoUrl": null,
+    "media": [],
+    "featured": true,
+    "dates": "Fall 2023"
+  }
+]

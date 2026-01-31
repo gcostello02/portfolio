@@ -1,0 +1,39 @@
+{
+  "name": "Grant Costello",
+  "title": "Software Engineer at TruePath Vision",
+  "tagline": "B.S. in Computer Science & B.A. in Economics | Passionate about Tech and Teamwork",
+  "location": "Henrico, Virginia",
+  "email": "grant.costello.02@gmail.com",
+  "phone": "(804) 629-3160",
+  "summary": "I am an ambitious Computer Science and Economics student at the University of Virginia, set to graduate in May 2025. My passion lies at the intersection of technology and business, where I leverage my strong technical skills and analytical mindset to drive innovative solutions.\n\nAs a Software Engineering Intern at Markel, I have honed my expertise in web application development, Agile methodologies, and cloud technologies, including Azure and .NET. My experience includes collaborating on projects that utilize AI for automation and data management, further enhancing operational efficiency.\n\nCurrently, I serve as a Teaching Assistant in an introductory computer science class, where I mentor peers and assist in cultivating problem-solving skills through programming. My technical proficiencies encompass Java, Python, JavaScript, SQL, and several modern frameworks such as React and Angular.\n\nBeyond academics, I actively contribute to the University community as a Practice Player for the Women's Basketball Team and have held leadership roles in youth sports mentorship. I thrive in collaborative environments and am committed to applying my skills to create impactful solutions in technology and beyond.",
+  "github": {
+    "personal": "gcostello02",
+    "work": "gcostello02-tpv"
+  },
+  "linkedin": "linkedin.com/in/grant-costello",
+  "education": {
+    "school": "University of Virginia",
+    "schoolShort": "UVA",
+    "degrees": [
+      {
+        "type": "Bachelor of Science",
+        "field": "Computer Science",
+        "college": "School of Engineering & Applied Sciences"
+      },
+      {
+        "type": "Bachelor of Arts",
+        "field": "Economics"
+      }
+    ],
+    "location": "Charlottesville, VA",
+    "graduationYear": 2025,
+    "graduationDate": "May 2025",
+    "gpa": 3.3,
+    "coursework": [
+      "Advanced Software Development",
+      "Data Structures & Algorithms II",
+      "Artificial Intelligence",
+      "Web Applications"
+    ]
+  }
+}

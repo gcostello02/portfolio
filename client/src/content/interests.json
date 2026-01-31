@@ -1,0 +1,61 @@
+{
+  "interests": [
+    {
+      "id": "basketball",
+      "title": "Basketball",
+      "icon": "basketball",
+      "description": "Passionate about basketball both as a player and coach",
+      "highlights": [
+        {
+          "title": "UVA Women's Basketball Practice Player",
+          "dates": "Fall 2022 - 2025",
+          "description": "Contributing to the University of Virginia Women's Basketball Team as a practice player, helping the team prepare for games and improve their skills"
+        },
+        {
+          "title": "Give & Go Basketball Camp Coach",
+          "dates": "June 2017 - July 2025",
+          "description": "Teaching fundamentals of basketball to elementary aged children at Second Baptist Church camp, fostering a love for the sport and teamwork"
+        }
+      ]
+    },
+    {
+      "id": "economics",
+      "title": "Economics",
+      "icon": "trending-up",
+      "description": "Double major in Economics with a passion for understanding market dynamics and business strategy",
+      "highlights": [
+        {
+          "title": "UVA Economics Club Member",
+          "dates": "Spring 2021 - 2025",
+          "description": "Active member of the Economics Club, engaging in discussions about economic theory, policy, and real-world applications"
+        }
+      ]
+    },
+    {
+      "id": "teaching",
+      "title": "Teaching & Mentorship",
+      "icon": "users",
+      "description": "Dedicated to helping others learn and grow in technology and beyond",
+      "highlights": [
+        {
+          "title": "Head Teaching Assistant",
+          "dates": "January 2024 - May 2025",
+          "description": "Lead TA for database systems course, mentoring students on complex database concepts and SQL optimization"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "Community Service",
+      "icon": "heart",
+      "description": "Committed to giving back through various community initiatives",
+      "highlights": [
+        {
+          "title": "Sigma Alpha Lambda Honor Society",
+          "dates": "Spring 2021 - 2025",
+          "description": "Member of national leadership and honors organization focused on service, scholarship, and fellowship"
+        }
+      ]
+    }
+  ]
+}

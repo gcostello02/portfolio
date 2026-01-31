@@ -1,0 +1,90 @@
+[
+  {
+    "id": "truepath-vision",
+    "company": "TruePath Vision",
+    "role": "Software Engineer",
+    "location": "Charlottesville, Virginia",
+    "dates": "June 2025 - Present",
+    "startDate": "2025-06",
+    "endDate": null,
+    "description": [
+      "Working as a software engineer for a startup company focused on using Facial Recognition AI to prevent Human Trafficking"
+    ],
+    "technologies": []
+  },
+  {
+    "id": "uva-ta",
+    "company": "University of Virginia",
+    "role": "Head Teaching Assistant",
+    "location": "Charlottesville, Virginia",
+    "dates": "January 2024 - May 2025",
+    "startDate": "2024-01",
+    "endDate": "2025-05",
+    "description": [
+      "Selected as a Lead Teaching Assistant for an upper-level database systems course, providing guidance to students on complex database concepts",
+      "Facilitated student understanding of entity relationship diagram design and SQL query optimization through hands-on problem-solving sessions",
+      "Managed grading, debugging support, and adherence to best practices, resulting in improved student project quality and comprehension"
+    ],
+    "technologies": ["SQL", "Database Design", "Entity Relationship Diagrams"]
+  },
+  {
+    "id": "markel",
+    "company": "Markel Corporation",
+    "role": "Software Engineering Intern",
+    "location": "Glen Allen, Virginia",
+    "dates": "May 2024 - August 2024",
+    "startDate": "2024-05",
+    "endDate": "2024-08",
+    "description": [
+      "Developed an AI-driven application within the Document Solutions Team to automate responses for insurance forms, enhancing efficiency and accuracy in the documentation process",
+      "Implemented Agile methodologies using Kanban and the Atlassian tool suite to streamline project workflows and improve team collaboration",
+      "Engineered a robust .NET backend on Microsoft Azure to efficiently manage and store AI-generated queries and responses utilizing table storage architecture",
+      "Integrated a user-friendly Angular frontend with an AG Grid visualization for real-time tracking of AI logs, enhancing user experience and accessibility through effective data presentation"
+    ],
+    "technologies": ["Angular", ".NET", "Microsoft Azure", "AG Grid", "Kanban", "Atlassian"]
+  },
+  {
+    "id": "completely-kids",
+    "company": "Completely Kids Richmond",
+    "role": "WordPress Developer & Website Manager",
+    "location": "Richmond, Virginia",
+    "dates": "March 2024 - Present",
+    "startDate": "2024-03",
+    "endDate": null,
+    "description": [
+      "Enhanced user experience on the Completely Kids Richmond website through CSS updates and troubleshooting link issues",
+      "Integrated Google AdSense, optimizing ad placements to significantly increase revenue generation",
+      "Collaborated with stakeholders to develop new website functionalities that align with organizational goals and user needs"
+    ],
+    "technologies": ["WordPress", "CSS", "Google AdSense"]
+  },
+  {
+    "id": "amc-technology",
+    "company": "AMC Technology LLC",
+    "role": "Software Engineering Intern",
+    "location": "Richmond, Virginia",
+    "dates": "June 2023 - August 2023",
+    "startDate": "2023-06",
+    "endDate": "2023-08",
+    "description": [
+      "Applied Agile methodologies by engaging in sprint planning, code reviews, and daily stand-ups to support project commitments",
+      "Developed a web application to monitor call center agent metrics within Salesforce CRM, utilizing the Angular framework and Salesforce APIs",
+      "Presented application demos at the conclusion of sprints, demonstrating continuous progress and innovation",
+      "Utilized Azure DevOps for CI/CD practices, managing version control, pull requests, and task tracking effectively"
+    ],
+    "technologies": ["Angular", "Salesforce CRM", "Salesforce APIs", "Azure DevOps", "CI/CD"]
+  },
+  {
+    "id": "give-go-camp",
+    "company": "Give & Go Basketball Camp at Second Baptist Church",
+    "role": "Camp Counselor & Coach",
+    "location": "Henrico, Virginia",
+    "dates": "June 2017 - July 2025",
+    "startDate": "2017-06",
+    "endDate": "2025-07",
+    "description": [
+      "Teach fundamentals of basketball to elementary aged children"
+    ],
+    "technologies": []
+  }
+]

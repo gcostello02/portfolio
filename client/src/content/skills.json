@@ -1,0 +1,47 @@
+{
+  "categories": [
+    {
+      "name": "Proficient",
+      "description": "Core technologies with extensive hands-on experience",
+      "skills": [
+        { "name": "Java", "icon": "java" },
+        { "name": "Python", "icon": "python" },
+        { "name": "HTML", "icon": "html" },
+        { "name": "CSS", "icon": "css" },
+        { "name": "JavaScript", "icon": "javascript" },
+        { "name": "React.js", "icon": "react" },
+        { "name": "AngularJS", "icon": "angular" },
+        { "name": "Django", "icon": "django" },
+        { "name": "JSON", "icon": "json" },
+        { "name": "C#", "icon": "csharp" },
+        { "name": "SQL", "icon": "database" },
+        { "name": "Web Development", "icon": "globe" },
+        { "name": "Git", "icon": "git" }
+      ]
+    },
+    {
+      "name": "Experience With",
+      "description": "Technologies used in projects and internships",
+      "skills": [
+        { "name": "PHP", "icon": "php" },
+        { "name": "C", "icon": "c" },
+        { "name": "Node.js", "icon": "nodejs" },
+        { "name": "Express.js", "icon": "express" },
+        { "name": "MongoDB", "icon": "mongodb" },
+        { "name": "PostgreSQL", "icon": "postgresql" },
+        { "name": "Microsoft Azure", "icon": "azure" },
+        { "name": "REST APIs", "icon": "api" },
+        { "name": "Power BI", "icon": "powerbi" },
+        { "name": ".NET", "icon": "dotnet" },
+        { "name": "Docker", "icon": "docker" }
+      ]
+    }
+  ],
+  "highlights": [
+    "Full-Stack Development",
+    "Agile Methodologies",
+    "Cloud Technologies",
+    "Database Design",
+    "AI Integration"
+  ]
+}
