@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen, Code } from "lucide-react";
+import { GraduationCap, BookOpen, Code, MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getEducation } from "@/lib/content";
+import { getEducation, type Degree } from "@/lib/content";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,6 +17,70 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
+function DegreeColumn({ degree, index }: { degree: Degree; index: number }) {
+  return (
+    <motion.div variants={itemVariants} className="space-y-4">
+      <Card>
+        <CardHeader className="pb-3">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="h-5 w-5 text-primary" />
+            <CardTitle className="text-base">{degree.field}</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <p className="text-sm font-medium text-foreground">{degree.type}</p>
+          {degree.college && (
+            <p className="text-xs text-muted-foreground mt-1">{degree.college}</p>
+          )}
+        </CardContent>
+      </Card>
+
+      {degree.courses.length > 0 && (
+        <div className="space-y-3">
+          <h4 className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+            <BookOpen className="h-4 w-4" />
+            Coursework
+          </h4>
+          <div className="space-y-3">
+            {degree.courses.map((course) => (
+              <Card key={course.code} className="hover-elevate" data-testid={`card-course-${course.code}`}>
+                <CardContent className="py-3 px-4">
+                  <h5 className="font-medium text-sm text-foreground leading-tight">
+                    {course.name}
+                  </h5>
+                  <p className="text-xs text-muted-foreground mt-0.5 mb-2">
+                    {course.code}
+                  </p>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    {course.description}
+                  </p>
+                  <div className="flex items-center gap-1 mb-1.5">
+                    <Code className="h-3 w-3 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">Skills:</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {course.skills.map((skill) => (
+                      <Badge key={skill} variant="secondary" className="text-xs py-0">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {degree.courses.length === 0 && (
+        <p className="text-sm text-muted-foreground italic">
+          Coursework coming soon...
+        </p>
+      )}
+    </motion.div>
+  );
+}
+
 export function EducationSection() {
   const education = getEducation();
 
@@ -29,86 +93,39 @@ export function EducationSection() {
       data-testid="education-section"
     >
       <motion.div variants={itemVariants}>
-        <Card>
-          <CardHeader className="pb-3">
-            <div className="flex items-center gap-2">
-              <GraduationCap className="h-5 w-5 text-primary" />
-              <CardTitle className="text-lg">Degrees</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <p className="font-semibold text-foreground" data-testid="text-education-school">
-                {education.school}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {education.location}
-              </p>
-            </div>
-            <div className="space-y-3">
-              {education.degrees.map((degree, index) => (
-                <div key={index} className="border-l-2 border-primary/30 pl-3">
-                  <p className="font-medium text-foreground">
-                    {degree.type} in {degree.field}
-                  </p>
-                  {degree.college && (
-                    <p className="text-xs text-muted-foreground">
-                      {degree.college}
-                    </p>
-                  )}
+        <Card className="bg-primary/5 border-primary/20">
+          <CardContent className="py-5">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-primary/10">
+                  <GraduationCap className="h-6 w-6 text-primary" />
                 </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2 pt-2">
-              <Badge variant="default">
-                Class of {education.graduationYear}
-              </Badge>
-              <Badge variant="outline">GPA: {education.gpa}</Badge>
+                <div>
+                  <p className="font-semibold text-lg text-foreground" data-testid="text-education-school">
+                    {education.school}
+                  </p>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <MapPin className="h-3.5 w-3.5" />
+                    <span>{education.location}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="default">
+                  Class of {education.graduationYear}
+                </Badge>
+                <Badge variant="outline">GPA: {education.gpa}</Badge>
+              </div>
             </div>
           </CardContent>
         </Card>
       </motion.div>
 
-      <motion.div variants={itemVariants}>
-        <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-          <BookOpen className="h-5 w-5 text-primary" />
-          Coursework
-        </h3>
-        <div className="space-y-4">
-          {education.courses.map((course, index) => (
-            <motion.div key={course.code} variants={itemVariants}>
-              <Card className="hover-elevate" data-testid={`card-course-${index}`}>
-                <CardContent className="pt-5 pb-4">
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-foreground leading-tight">
-                        {course.name}
-                      </h4>
-                      <p className="text-xs text-muted-foreground mt-0.5">
-                        {course.code}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {course.description}
-                  </p>
-                  <div className="flex items-center gap-1.5 mb-2">
-                    <Code className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-xs text-muted-foreground font-medium">Skills learned:</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {course.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="text-xs">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {education.degrees.map((degree, index) => (
+          <DegreeColumn key={degree.field} degree={degree} index={index} />
+        ))}
+      </div>
     </motion.div>
   );
 }

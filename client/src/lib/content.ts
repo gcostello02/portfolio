@@ -13,19 +13,21 @@ export interface Course {
   skills: string[];
 }
 
+export interface Degree {
+  type: string;
+  field: string;
+  college?: string;
+  courses: Course[];
+}
+
 export interface Education {
   school: string;
   schoolShort: string;
-  degrees: {
-    type: string;
-    field: string;
-    college?: string;
-  }[];
+  degrees: Degree[];
   location: string;
   graduationYear: number;
   graduationDate: string;
   gpa: number;
-  courses: Course[];
 }
 
 export interface Profile {
