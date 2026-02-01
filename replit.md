@@ -2,7 +2,7 @@
 
 ## Overview
 
-A polished, modern portfolio website with an interactive homepage featuring a topographic background and animated path with clickable points representing different portfolio sections. Includes gamification through progress tracking (sections visited) and a recruiter packet unlock system. Content is data-driven through JSON files for easy editing. The visual design uses topographic elements for aesthetics while keeping all text/labels neutral and professional.
+A polished, modern portfolio website with an interactive homepage featuring a topographic background and animated path with clickable points representing different portfolio sections. Includes gamification through progress tracking (sections visited) and an Info Pack unlock system. Content is data-driven through JSON files for easy editing. The visual design uses topographic elements for aesthetics while keeping all text/labels neutral and professional.
 
 ## User Preferences
 
@@ -38,7 +38,7 @@ The `client/src/lib/content.ts` module provides typed accessors for all content 
 - **Session Management**: express-session with connect-pg-simple for PostgreSQL sessions
 
 ### Key Design Patterns
-- **Trail Progress Gamification**: LocalStorage-based tracking of visited sections with unlock threshold (3 stops unlocks recruiter packet)
+- **Trail Progress Gamification**: LocalStorage-based tracking of visited sections with unlock threshold (3 stops unlocks Info Pack)
 - **Drawer-based Navigation**: Desktop uses right-side drawer for section previews, mobile uses list view
 - **Theme System**: CSS variables with light/dark mode toggle, persisted to localStorage
 - **Responsive Design**: Mobile-first with `useIsMobile` hook for breakpoint detection

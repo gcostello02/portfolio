@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getProfile } from "@/lib/content";
 
-interface RecruiterPacketProps {
+interface InfoPackProps {
   isOpen: boolean;
   onClose: () => void;
 }
@@ -43,7 +43,7 @@ function ConfettiParticle({ delay, x }: { delay: number; x: number }) {
   );
 }
 
-export function RecruiterPacket({ isOpen, onClose }: RecruiterPacketProps) {
+export function InfoPack({ isOpen, onClose }: InfoPackProps) {
   const profile = getProfile();
   const [showConfetti, setShowConfetti] = useState(false);
   const [hasShownConfetti, setHasShownConfetti] = useState(false);
@@ -68,7 +68,7 @@ export function RecruiterPacket({ isOpen, onClose }: RecruiterPacketProps) {
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent 
         className="sm:max-w-lg overflow-hidden"
-        data-testid="recruiter-packet-modal"
+        data-testid="info-pack-modal"
       >
         <AnimatePresence>
           {showConfetti && (
@@ -96,7 +96,7 @@ export function RecruiterPacket({ isOpen, onClose }: RecruiterPacketProps) {
             </div>
           </motion.div>
           <DialogTitle className="text-xl font-bold bg-gradient-to-r from-amber-500 to-amber-700 bg-clip-text text-transparent">
-            Recruiter Packet Unlocked
+            Info Pack Unlocked
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
             Thank you for exploring! Here's everything you need.

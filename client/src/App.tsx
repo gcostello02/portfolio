@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { TrailProgress } from "@/components/TrailProgress";
-import { RecruiterPacketTrigger } from "@/components/RecruiterPacketTrigger";
+import { InfoPackTrigger } from "@/components/InfoPackTrigger";
 import Home from "@/pages/Home";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ExperiencePage from "@/pages/ExperiencePage";
@@ -50,7 +50,7 @@ function App() {
                 <TrailProgress />
               </div>
             </div>
-            <RecruiterPacketTrigger />
+            <InfoPackTrigger />
           </div>
           <Toaster />
         </TooltipProvider>

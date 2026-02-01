@@ -8,10 +8,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
-import { RecruiterPacket } from "./RecruiterPacket";
+import { InfoPack } from "./InfoPack";
 import { useTheme } from "./ThemeProvider";
 
-export function RecruiterPacketTrigger() {
+export function InfoPackTrigger() {
   const { prefersReducedMotion } = useTheme();
   const { isUnlocked, getVisitedCount } = useTrailProgress();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +47,7 @@ export function RecruiterPacketTrigger() {
                   : "bg-muted text-muted-foreground cursor-not-allowed"
                 }
               `}
-              data-testid="button-recruiter-packet-trigger"
+              data-testid="button-info-pack-trigger"
             >
               {unlocked && !prefersReducedMotion && (
                 <motion.div
@@ -69,21 +69,21 @@ export function RecruiterPacketTrigger() {
                 <Lock className="h-4 w-4 mr-2" />
               )}
               <span className="relative z-10">
-                {unlocked ? "Recruiter Packet" : "Locked"}
+                {unlocked ? "Info Pack" : "Locked"}
               </span>
             </Button>
           </motion.div>
         </TooltipTrigger>
         <TooltipContent side="left" className="max-w-[200px]">
           {unlocked ? (
-            <p>Click to view the recruiter packet with resume, links, and more!</p>
+            <p>Click to view the Info Pack with resume, links, and more!</p>
           ) : (
-            <p>Visit {stopsNeeded} more trail stop{stopsNeeded !== 1 ? 's' : ''} to unlock the recruiter packet</p>
+            <p>Visit {stopsNeeded} more trail stop{stopsNeeded !== 1 ? 's' : ''} to unlock the Info Pack</p>
           )}
         </TooltipContent>
       </Tooltip>
 
-      <RecruiterPacket 
+      <InfoPack 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />

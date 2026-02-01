@@ -86,7 +86,7 @@ export function TrailProgress() {
               </motion.div>
             </TooltipTrigger>
             <TooltipContent side="bottom" className="text-xs">
-              <p>{unlocked ? "Recruiter Packet Unlocked!" : "Visit 3 stops to unlock"}</p>
+              <p>{unlocked ? "Info Pack Unlocked!" : "Visit 3 stops to unlock"}</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -100,7 +100,7 @@ export function TrailProgress() {
         >
           <Trophy className="h-3 w-3 text-amber-500" />
           <span className="text-[10px] font-medium text-amber-600 dark:text-amber-400">
-            Packet Unlocked!
+            Info Pack Unlocked!
           </span>
         </motion.div>
       )}
