@@ -1,14 +1,14 @@
 $ErrorActionPreference = "Stop"
 
 # Fill these in
-$PROJECT_ID = "YOUR_PROJECT_ID"
-$REGION = "us-central1"
+$PROJECT_ID = "gcostello"
+$REGION = "us-east1"
 $REPO = "portfolio"
 $IMAGE = "portfolio"
 $SERVICE = "portfolio"
 
 # Optional: set to $true to skip repo creation if it already exists
-$SKIP_REPO_CREATE = $false
+$SKIP_REPO_CREATE = $true
 
 if ($PROJECT_ID -eq "YOUR_PROJECT_ID") {
   Write-Error "Please set PROJECT_ID in scripts/deploy-gcloud.ps1"
@@ -35,10 +35,12 @@ if (-not $SKIP_REPO_CREATE) {
   }
 }
 
-gcloud builds submit --tag "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:latest"
+$IMAGE_TAG = "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/${IMAGE}:latest"
+
+gcloud builds submit --tag $IMAGE_TAG
 
 gcloud run deploy $SERVICE `
-  --image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:latest" `
+  --image $IMAGE_TAG `
   --region $REGION `
   --platform managed `
   --allow-unauthenticated `

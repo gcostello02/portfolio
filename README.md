@@ -93,3 +93,4 @@ powershell -ExecutionPolicy Bypass -File .\scripts\deploy-gcloud.ps1
 ## Troubleshooting
 - If the dev server fails to bind on macOS with Node 24, use Node 20 or ensure `HOST=127.0.0.1` locally.
 - If Cloud Run deploy fails, confirm the project ID and region are correct and that billing is enabled.
+- If `gcloud builds submit` fails with `PERMISSION_DENIED`, grant your user `roles/cloudbuild.builds.editor` and `roles/artifactregistry.writer` in the project.
