@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 # Fill these in
 $PROJECT_ID = "gcostello"
-$REGION = "us-east1"
+$REGION = "us-east4"
 $REPO = "portfolio"
 $IMAGE = "portfolio"
 $SERVICE = "portfolio"
