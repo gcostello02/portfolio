@@ -1,4 +1,20 @@
 [
+    {
+    "id": "shadowpilot",
+    "title": "ShadowPilot",
+    "description": "FastAPI service that analyzes politician insider-trading filings, with a web dashboard for portfolio visibility.",
+    "longDescription": [
+      "Built a FastAPI service that analyzes politician insider-trading filings and generates trade signals",
+      "Implemented ingestion, de-duplication, trade filtering, pricing enrichment, and order execution via Alpaca, with guardrails and run-now admin controls",
+      "Exposed a single-page portfolio dashboard and persisted raw trades, signals, orders, fills, and daily snapshots for attribution"
+    ],
+    "technologies": ["Python", "Flask", "FastAPI", "PostgreSQL", "Alpaca API", "Financial Modeling Prep", "Cloud Run", "Cloud SQL", "Alembic", "Docker"],
+    "featured": true,
+    "dates": "Fall 2025 - Present",
+    "githubUrl": "",
+    "demoUrl": "https://shadowpilot.gcostello.com",
+    "media": []
+  },
   {
     "id": "matrix-madness",
     "title": "Matrix Madness Web Application",
@@ -10,19 +26,26 @@
     ],
     "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "Styled Components"],
     "featured": true,
-    "dates": "Fall 2023 - Spring 2024"
-  },
-  {
-    "id": "hoos-hunt",
-    "title": "Hoos Hunt Web Application",
-    "description": "An interactive scavenger hunt web application with gamified elements and real-time location tracking. Built collaboratively with Google Maps integration for answer verification.",
-    "longDescription": [
-      "Collaborated in a team to design and develop an interactive scavenger hunt web application, enhancing user engagement with gamified elements",
-      "Integrated Google Maps API for real-time location tracking and answer verification, improving user experience and functionality",
-      "Employed Django for the backend and PostgreSQL for data management, using the Bootstrap library for responsive styling"
-    ],
-    "technologies": ["Django", "PostgreSQL", "Google Maps API", "Bootstrap", "Python"],
-    "featured": true,
-    "dates": "Fall 2023"
+    "dates": "Fall 2023 - Spring 2024",
+    "githubUrl": "https://github.com/your-username/matrix-madness",
+    "demoUrl": "https://matrix-madness.yourdomain.com",
+    "media": [
+      {
+        "type": "image",
+        "url": "/media/projects/matrix-madness/dashboard.png",
+        "caption": "Stats dashboard"
+      },
+      {
+        "type": "video",
+        "url": "/media/projects/matrix-madness/demo.mp4",
+        "thumbnail": "/media/projects/matrix-madness/demo-thumb.jpg",
+        "caption": "Product walkthrough"
+      },
+      {
+        "type": "youtube",
+        "url": "https://youtu.be/VIDEO_ID",
+        "caption": "Short demo"
+      }
+    ]
   }
 ]
