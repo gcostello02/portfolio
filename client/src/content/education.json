@@ -36,6 +36,12 @@
           "skills": ["SQL", "Database Design", "Schema", "ER Diagrams"]
         },
         {
+          "name": "Intro to Cybersecurity",
+          "code": "CS 3710",
+          "description": "Experiment with a wide range of cybersecurity topics like SQL injection and encryption in a Linux VM",
+          "skills": ["SQL injection", "Encryption", "Networking", "Linux", "Virtual Machines"]
+        },
+        {
           "name": "Advanced Software Development",
           "code": "CS 3240",
           "description": "Full-stack web development with agile methodologies and team collaboration",
