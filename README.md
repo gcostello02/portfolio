@@ -48,7 +48,6 @@ All content lives in `client/src/content/`:
 - `projects.json`
 - `skills.json`
 - `interests.json`
-- `apps.json`
 
 ## Deployment to Google Cloud (Cloud Run)
 This repo includes a Dockerfile and one-command deployment scripts.
