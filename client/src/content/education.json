@@ -76,19 +76,19 @@
           "name": "Sustainability Economics",
           "code": "ECON 3430",
           "description": "Why we have environmental problems like pollution & global warming and how to solve them under a microeconomic lens",
-          "skills": []
+          "skills": ["Problem Solving", "Microeconomics", "Environmental Economics", "Policy Analysis"]
         },
         {
           "name": "Introduction to Econometrics",
           "code": "ECON 3720",
           "description": "Using economic statistical principles to solve complex problems",
-          "skills": ["Stata", "Statistics", "Polishing Data"]
+          "skills": ["Stata", "Statistics", "Polishing Data", "Regression Analysis"]
         },
         {
           "name": "Money and Banking",
           "code": "ECON 3030",
           "description": "Study the role of money in the economic system emphasizing monetary policy and theory",
-          "skills": ["Monetary Policy", "Market Indicators"]
+          "skills": ["Monetary Policy", "Market Indicators", "Financial Markets", "Macroeconomics"]
         }
       ]
     }
