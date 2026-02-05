@@ -8,7 +8,7 @@ $IMAGE = "portfolio"
 $SERVICE = "portfolio"
 
 # Optional: set to $true to skip repo creation if it already exists
-$SKIP_REPO_CREATE = $true
+$SKIP_REPO_CREATE = $false
 
 if ($PROJECT_ID -eq "YOUR_PROJECT_ID") {
   Write-Error "Please set PROJECT_ID in scripts/deploy-gcloud.ps1"
