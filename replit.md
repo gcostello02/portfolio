@@ -26,7 +26,6 @@ All portfolio content lives in editable JSON files under `client/src/content/`:
 - `projects.json` - Portfolio projects with media support
 - `skills.json` - Technical skills by category
 - `interests.json` - Personal interests and activities
-- `apps.json` - Mini-apps configuration for the Outpost hub
 
 The `client/src/lib/content.ts` module provides typed accessors for all content files.
 
@@ -49,8 +48,6 @@ The `client/src/lib/content.ts` module provides typed accessors for all content 
 ### Route Structure
 - `/` - Trail map home page
 - `/education`, `/projects`, `/experience`, `/skills`, `/interests`, `/contact` - Section pages
-- `/outpost` - Mini-apps launchpad hub
-- `/apps/:slug` - Dynamic app runner (supports internal, external, and iframe modes)
 
 ## External Dependencies
 

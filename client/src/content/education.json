@@ -4,13 +4,43 @@
   "location": "Charlottesville, VA",
   "graduationYear": 2025,
   "graduationDate": "May 2025",
-  "gpa": 3.3,
+  "gpa": 3.35,
   "degrees": [
     {
       "type": "Bachelor of Science",
       "field": "Computer Science",
       "college": "School of Engineering & Applied Sciences",
       "courses": [
+        {
+          "name": "Programming Languages for Web Applications",
+          "code": "CS 4640",
+          "description": "Full-stack Web Development basics starting with best practices in UI design and then moving to frameworks and deployment",
+          "skills": ["HTML", "CSS", "LESS", "SASS", "Javascript", "Typescript", "PHP", "Angular", "Docker", "UI/UX"]
+        },
+        {
+          "name": "Mobile Application Development",
+          "code": "CS 4720",
+          "description": "Mobile App architecture and development and deployment on Android",
+          "skills": ["Kotlin", "Flutter", "Android Studio", "UI/UX"]
+        },
+        {
+          "name": "Artificial Intelligence",
+          "code": "CS 4710",
+          "description": "Machine learning, neural networks, and intelligent agent design focusing on search algorithms",
+          "skills": ["Python", "Machine Learning", "Neural Networks", "AI", "Heuristics", "Search Algorithms"]
+        },
+        {
+          "name": "Database Systems",
+          "code": "CS 4750",
+          "description": "Machine learning, neural networks, and intelligent agent design focusing on search algorithms",
+          "skills": ["SQL", "Database Design", "Schema", "ER Diagrams"]
+        },
+        {
+          "name": "Intro to Cybersecurity",
+          "code": "CS 3710",
+          "description": "Experiment with a wide range of cybersecurity topics like SQL injection and encryption in a Linux VM",
+          "skills": ["SQL injection", "Encryption", "Networking", "Linux", "Virtual Machines"]
+        },
         {
           "name": "Advanced Software Development",
           "code": "CS 3240",
@@ -22,18 +52,6 @@
           "code": "CS 3100",
           "description": "Advanced algorithms, complexity analysis, and optimization techniques",
           "skills": ["Java", "Algorithms", "Data Structures", "Problem Solving"]
-        },
-        {
-          "name": "Artificial Intelligence",
-          "code": "CS 4710",
-          "description": "Machine learning, neural networks, and intelligent agent design",
-          "skills": ["Python", "Machine Learning", "Neural Networks", "AI"]
-        },
-        {
-          "name": "Web Applications",
-          "code": "CS 4640",
-          "description": "Modern web development with frontend frameworks and RESTful APIs",
-          "skills": ["JavaScript", "React", "Node.js", "REST APIs", "HTML/CSS"]
         }
       ]
     },
@@ -41,7 +59,38 @@
       "type": "Bachelor of Arts",
       "field": "Economics",
       "college": "College of Arts & Sciences",
-      "courses": []
+      "courses": [
+        {
+          "name": "Algorithmic Economics",
+          "code": "ECON 4740",
+          "description": "Intersection of algorithms and economic theory, using machine learning models to analyze dynamic marketplaces and agent decision making",
+          "skills": ["Game Theory", "Machine Learning", "Mathematical Modeling", "Optimization", "Python", "Pandas"]
+        },
+        {
+          "name": "Game Theory",
+          "code": "ECON 4010",
+          "description": "Analysis of the theory of strategically interdependent decision making wuth applications to auctions, bargaining, oligopoly, signaling, and strategic voting",
+          "skills": ["Probability", "Calculus", "Bayes Theorem"]
+        },
+        {
+          "name": "Sustainability Economics",
+          "code": "ECON 3430",
+          "description": "Why we have environmental problems like pollution & global warming and how to solve them under a microeconomic lens",
+          "skills": []
+        },
+        {
+          "name": "Introduction to Econometrics",
+          "code": "ECON 3720",
+          "description": "Using economic statistical principles to solve complex problems",
+          "skills": ["Stata", "Statistics", "Polishing Data"]
+        },
+        {
+          "name": "Money and Banking",
+          "code": "ECON 3030",
+          "description": "Study the role of money in the economic system emphasizing monetary policy and theory",
+          "skills": ["Monetary Policy", "Market Indicators"]
+        }
+      ]
     }
   ]
 }

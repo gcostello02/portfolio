@@ -3,7 +3,6 @@ import experienceData from "@/content/experience.json";
 import projectsData from "@/content/projects.json";
 import skillsData from "@/content/skills.json";
 import interestsData from "@/content/interests.json";
-import appsData from "@/content/apps.json";
 import educationData from "@/content/education.json";
 
 export interface Course {
@@ -111,16 +110,6 @@ export interface Interests {
   interests: Interest[];
 }
 
-export interface App {
-  id: string;
-  slug: string;
-  name: string;
-  description: string;
-  icon: string;
-  mode: "internal" | "external" | "iframe";
-  url: string | null;
-}
-
 export function getProfile(): Profile {
   return profileData as Profile;
 }
@@ -143,14 +132,6 @@ export function getInterests(): Interests {
 
 export function getEducation(): Education {
   return educationData as Education;
-}
-
-export function getApps(): App[] {
-  return appsData as App[];
-}
-
-export function getAppBySlug(slug: string): App | undefined {
-  return (appsData as App[]).find((app) => app.slug === slug);
 }
 
 export function getAllSearchableContent() {

@@ -141,7 +141,7 @@ export default function Home() {
           </motion.div>
         </section>
         
-        <section className="relative py-8 sm:py-12">
+        <section className="relative py-8 sm:py-4">
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-8"
