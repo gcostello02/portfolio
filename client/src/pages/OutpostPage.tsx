@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Tent, ExternalLink, Play } from "lucide-react";
+import { Tent, ExternalLink, Play } from "lucide-react";
 import * as LucideIcons from "lucide-react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -158,18 +158,6 @@ export default function OutpostPage() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <Link href="/">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="mb-6"
-              data-testid="button-back-trail"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Trail Map
-            </Button>
-          </Link>
-
           <motion.div
             variants={heroVariants}
             initial="initial"
@@ -193,7 +181,7 @@ export default function OutpostPage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-12">
+      <section className="container mx-auto px-4 py-4">
         {apps.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {apps.map((app, index) => (

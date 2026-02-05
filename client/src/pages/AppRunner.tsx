@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Construction, AlertTriangle, Loader2 } from "lucide-react";
+import { ExternalLink, Construction, AlertTriangle, Loader2 } from "lucide-react";
 import * as LucideIcons from "lucide-react";
-import { Link, useParams } from "wouter";
+import { useParams } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getAppBySlug, type App } from "@/lib/content";
@@ -36,12 +36,6 @@ function NotFoundView() {
               </p>
             </div>
           </div>
-          <Link href="/outpost">
-            <Button className="w-full mt-4" data-testid="button-back-outpost">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to The Outpost
-            </Button>
-          </Link>
         </CardContent>
       </Card>
     </div>
@@ -178,13 +172,6 @@ export default function AppRunner() {
       <header className="border-b bg-card/50 backdrop-blur-sm sticky top-16 z-40">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <Link href="/outpost">
-              <Button variant="ghost" size="sm" data-testid="button-back-outpost">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Outpost
-              </Button>
-            </Link>
-            <div className="h-6 w-px bg-border hidden sm:block" />
             <h1 className="font-semibold text-foreground truncate hidden sm:block">
               {app.name}
             </h1>

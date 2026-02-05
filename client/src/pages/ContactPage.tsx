@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Layers, Mail, Flag } from "lucide-react";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { Layers, Mail, Flag } from "lucide-react";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
 import { SEO } from "@/components/SEO";
@@ -53,18 +51,6 @@ export default function ContactPage() {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <Link href="/">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="mb-6"
-              data-testid="button-back-trail"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
-          
           <motion.div
             variants={heroVariants}
             initial="initial"
@@ -88,7 +74,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-12">
+      <section className="container mx-auto px-4 py-4">
         <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

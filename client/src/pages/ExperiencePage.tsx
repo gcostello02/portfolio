@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Layers, Briefcase, TrendingUp } from "lucide-react";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { Layers, Briefcase, TrendingUp } from "lucide-react";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { useTrailProgress } from "@/hooks/use-trail-progress";
 import { SEO } from "@/components/SEO";
@@ -51,18 +49,6 @@ export default function ExperiencePage() {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <Link href="/">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="mb-6"
-              data-testid="button-back-trail"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
-          
           <motion.div
             variants={heroVariants}
             initial="initial"
@@ -86,7 +72,7 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-12">
+      <section className="container mx-auto px-4 py-4">
         <ExperienceSection />
       </section>
     </motion.div>
