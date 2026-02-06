@@ -162,7 +162,7 @@ function ProjectCard({ project }: { project: Project }) {
                   data-testid={`link-project-demo-${project.id}`}
                 >
                   <ExternalLink className="h-4 w-4 mr-1" />
-                  Demo
+                  Take a look
                 </a>
               </Button>
             )}
