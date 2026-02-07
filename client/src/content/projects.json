@@ -10,7 +10,6 @@
       "Manages a real portfolio of $200"
     ],
     "technologies": ["Python", "Flask", "FastAPI", "PostgreSQL", "Alpaca API", "Financial Modeling Prep", "Cloud Run", "Cloud SQL", "Alembic", "Docker"],
-    "featured": true,
     "dates": "Fall 2025 - Present",
     "githubUrl": "",
     "demoUrl": "https://shadowpilot.gcostello.com",
@@ -25,10 +24,9 @@
       "Implementing Google Ads and Google Analytics to report website data to clients"
     ],
     "technologies": ["Wordpress", "Google Adsense", "Google Analytics", "Elementor"],
-    "featured": false,
     "dates": "Jan 2023 - Present",
     "githubUrl": "",
-    "demoUrl": "https://https://www.completelykidsrichmond.com",
+    "demoUrl": "https://www.completelykidsrichmond.com",
     "media": []
   },
   {
@@ -42,15 +40,37 @@
       "Assignment for PLs for Web Applications class"
     ],
     "technologies": ["Angular", "Bootstrap", "REST API", "PHP", "Typescript", "HTML", "CSS", "JSON"],
-    "featured": false,
     "dates": "Apr 2025",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/gcostello02/EvilWordle",
     "demoUrl": "",
     "media": [
       {
         "type": "image",
         "url": "/media/projects/evilwordle.jpg",
         "caption": "Evil Wordle"
+      }
+    ]
+  },
+  {
+    "id": "trivia-app",
+    "title": "Trivia App",
+    "description": "",
+    "longDescription": [
+      "Flutter Trivia App built for Android",
+      "Questions retrieved using OpenTDB API",
+      "Firebase Authentication and data is stored in Firebase Storage & Cloud Firestore",
+      "App consists of a login, page to answer questions, leaderboard, and profile page"
+    ],
+    "technologies": ["Flutter", "Dart", "Kotlin", "Firebase", "Cloud Firestore"],
+    "dates": "Mar 2025 - Apr 2025",
+    "githubUrl": "https://github.com/gcostello02/EvilWordle",
+    "demoUrl": "",
+    "media": [
+      {
+        "type": "video",
+        "url": "/media/projects/trivia-app.webm",
+        "thumbnail": "",
+        "caption": "Trivia Mobile App"
       }
     ]
   },
@@ -64,7 +84,6 @@
       "Applied Styled Components for modular design, enhancing the maintainability and styling consistency of the application"
     ],
     "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "Styled Components"],
-    "featured": true,
     "dates": "Fall 2023 - Spring 2024",
     "githubUrl": "https://github.com/your-username/matrix-madness",
     "demoUrl": "https://matrix-madness.yourdomain.com",

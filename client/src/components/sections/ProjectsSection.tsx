@@ -115,7 +115,7 @@ function ProjectCard({ project }: { project: Project }) {
     <>
       <Card
         className={[
-          "hover-elevate",
+          "hover-elevate h-full flex flex-col",
           isClickable ? "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" : "",
         ].join(" ")}
         data-testid={`card-project-${project.id}`}
@@ -143,7 +143,7 @@ function ProjectCard({ project }: { project: Project }) {
             )}
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 flex-1 flex flex-col">
           <p className="text-sm text-muted-foreground">{project.description}</p>
 
           {project.longDescription?.length > 0 && (
@@ -183,7 +183,7 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
           )}
 
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-2 mt-auto">
             {project.githubUrl && (
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -239,9 +239,9 @@ export function ProjectsSection() {
       data-testid="projects-section"
     >
 
-      <div className="grid gap-4">
+      <div className="grid gap-4 lg:grid-cols-2">
         {projects.map((project) => (
-          <motion.div key={project.id} variants={cardVariants}>
+          <motion.div key={project.id} variants={cardVariants} className="h-full">
             <ProjectCard project={project} />
           </motion.div>
         ))}
