@@ -146,6 +146,14 @@ function ProjectCard({ project }: { project: Project }) {
         <CardContent className="space-y-4">
           <p className="text-sm text-muted-foreground">{project.description}</p>
 
+          {project.longDescription?.length > 0 && (
+            <ul className="space-y-1 text-sm text-muted-foreground list-disc pl-4">
+              {project.longDescription.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+
           <div className="flex flex-wrap gap-1.5">
             {project.technologies.map((tech) => (
               <Badge key={tech} variant="outline" className="text-xs">

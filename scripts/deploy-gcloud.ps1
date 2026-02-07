@@ -1,5 +1,9 @@
 $ErrorActionPreference = "Stop"
 
+param(
+  [switch]$AuthLogin
+)
+
 # Fill these in
 $PROJECT_ID = "gcostello"
 $REGION = "us-east4"
@@ -18,7 +22,9 @@ if (-not (Get-Command gcloud -ErrorAction SilentlyContinue)) {
   Write-Error "gcloud CLI is not installed"
 }
 
-gcloud auth login
+if ($AuthLogin) {
+  gcloud auth login
+}
 
 gcloud config set project $PROJECT_ID
 
