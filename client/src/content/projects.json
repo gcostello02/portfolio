@@ -17,6 +17,44 @@
     "media": []
   },
   {
+    "id": "completelykidsrichmond",
+    "title": "Completely Kids Richmond",
+    "description": "",
+    "longDescription": [
+      "Renovating existing website by deploying website development applications WordPress and Elementor",
+      "Implementing Google Ads and Google Analytics to report website data to clients"
+    ],
+    "technologies": ["Wordpress", "Google Adsense", "Google Analytics", "Elementor"],
+    "featured": false,
+    "dates": "Jan 2023 - Present",
+    "githubUrl": "",
+    "demoUrl": "https://https://www.completelykidsrichmond.com",
+    "media": []
+  },
+  {
+    "id": "evilwordle",
+    "title": "Evil Wordle",
+    "description": "",
+    "longDescription": [
+      "Your average Wordle game but words can be any length",
+      "Developed using Angular Framework",
+      "Service calls developed PHP API to get target word",
+      "Assignment for PLs for Web Applications class"
+    ],
+    "technologies": ["Angular", "Bootstrap", "REST API", "PHP", "Typescript", "HTML", "CSS", "JSON"],
+    "featured": false,
+    "dates": "Apr 2025",
+    "githubUrl": "",
+    "demoUrl": "",
+    "media": [
+      {
+        "type": "image",
+        "url": "/media/projects/evilwordle.jpg",
+        "caption": "Evil Wordle"
+      }
+    ]
+  },
+  {
     "id": "matrix-madness",
     "title": "Matrix Madness Web Application",
     "description": "A full-stack web application for college basketball player data and statistics. Built with a database-driven architecture for efficient storage and retrieval of player data through API calls.",
@@ -41,11 +79,6 @@
         "url": "/media/projects/matrix-madness/demo.mp4",
         "thumbnail": "/media/projects/matrix-madness/demo-thumb.jpg",
         "caption": "Product walkthrough"
-      },
-      {
-        "type": "youtube",
-        "url": "https://youtu.be/VIDEO_ID",
-        "caption": "Short demo"
       }
     ]
   }
