@@ -55,7 +55,7 @@ export default function EducationPage() {
             variants={heroVariants}
             initial="initial"
             animate="animate"
-            className="max-w-2xl"
+            className="max-w-2xl lg:max-w-none"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-primary/10">
@@ -66,7 +66,7 @@ export default function EducationPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               {education.school}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground lg:whitespace-nowrap">
               {education.degrees.map(d => `${d.type} in ${d.field}`).join(" & ")} - {education.graduationDate}
             </p>
           </motion.div>

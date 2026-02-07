@@ -6,7 +6,8 @@
     "longDescription": [
       "Built a FastAPI service that analyzes politician insider-trading filings and generates trade signals",
       "Implemented ingestion, de-duplication, trade filtering, pricing enrichment, and order execution via Alpaca, with guardrails and run-now admin controls",
-      "Exposed a single-page portfolio dashboard and persisted raw trades, signals, orders, fills, and daily snapshots for attribution"
+      "Exposed a single-page portfolio dashboard and persisted raw trades, signals, orders, fills, and daily snapshots for attribution",
+      "Manages a real portfolio of $200"
     ],
     "technologies": ["Python", "Flask", "FastAPI", "PostgreSQL", "Alpaca API", "Financial Modeling Prep", "Cloud Run", "Cloud SQL", "Alembic", "Docker"],
     "featured": true,
