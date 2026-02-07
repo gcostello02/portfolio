@@ -1,8 +1,8 @@
-$ErrorActionPreference = "Stop"
-
 param(
   [switch]$AuthLogin
 )
+
+$ErrorActionPreference = "Stop"
 
 # Fill these in
 $PROJECT_ID = "gcostello"
