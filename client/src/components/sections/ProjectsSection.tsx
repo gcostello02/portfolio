@@ -79,6 +79,8 @@ function ProjectCard({ project }: { project: Project }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  const demoUrl = project.demoUrl?.trim();
+  const isClickable = Boolean(demoUrl);
   const media = project.media || [];
 
   const openLightbox = (index: number) => {
@@ -86,9 +88,43 @@ function ProjectCard({ project }: { project: Project }) {
     setLightboxOpen(true);
   };
 
+  const openDemo = () => {
+    if (!demoUrl) return;
+    window.open(demoUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const isInteractiveTarget = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) return false;
+    return Boolean(target.closest("a, button, input, textarea, select, [role='button'], [role='link']"));
+  };
+
+  const handleCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!isClickable || isInteractiveTarget(event.target)) return;
+    openDemo();
+  };
+
+  const handleCardKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!isClickable || isInteractiveTarget(event.target)) return;
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDemo();
+    }
+  };
+
   return (
     <>
-      <Card className="hover-elevate" data-testid={`card-project-${project.id}`}>
+      <Card
+        className={[
+          "hover-elevate",
+          isClickable ? "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" : "",
+        ].join(" ")}
+        data-testid={`card-project-${project.id}`}
+        onClick={handleCardClick}
+        onKeyDown={handleCardKeyDown}
+        role={isClickable ? "link" : undefined}
+        tabIndex={isClickable ? 0 : undefined}
+        aria-label={isClickable ? `Open ${project.title}` : undefined}
+      >
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1 min-w-0">
