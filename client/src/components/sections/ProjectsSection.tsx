@@ -238,14 +238,6 @@ export function ProjectsSection() {
       animate="visible"
       data-testid="projects-section"
     >
-      <motion.div variants={cardVariants}>
-        <h3 className="text-lg font-semibold text-foreground mb-1">
-          Projects
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Technical projects and applications
-        </p>
-      </motion.div>
 
       <div className="grid gap-4">
         {projects.map((project) => (

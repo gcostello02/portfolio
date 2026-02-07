@@ -135,15 +135,7 @@ export function ExperienceSection() {
       animate="visible"
       data-testid="experience-section"
     >
-      <motion.div variants={itemVariants}>
-        <h3 className="text-lg font-semibold text-foreground mb-1">
-          Experience
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Professional journey and work history
-        </p>
-      </motion.div>
-
+      
       <div className="pt-2">
         {experience.map((exp, index) => (
           <motion.div key={exp.id} variants={itemVariants}>

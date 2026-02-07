@@ -96,12 +96,6 @@ export function SkillsSection() {
       animate="visible"
       data-testid="skills-section"
     >
-      <motion.div variants={itemVariants}>
-        <h3 className="text-lg font-semibold text-foreground mb-1">Skills</h3>
-        <p className="text-sm text-muted-foreground">
-          Technical skills and expertise
-        </p>
-      </motion.div>
 
       {skills.categories.map((category) => (
         <motion.div key={category.name} variants={itemVariants}>

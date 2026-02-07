@@ -118,14 +118,6 @@ export function InterestsSection() {
       animate="visible"
       data-testid="interests-section"
     >
-      <motion.div variants={cardVariants}>
-        <h3 className="text-lg font-semibold text-foreground mb-1">
-          Interests
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Passions beyond the code
-        </p>
-      </motion.div>
 
       <div className="grid gap-4">
         {sortedInterests.map((interest) => (
