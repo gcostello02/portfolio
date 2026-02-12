@@ -75,29 +75,122 @@
     ]
   },
   {
-    "id": "matrix-madness",
-    "title": "Matrix Madness Web Application",
-    "description": "A full-stack web application for college basketball player data and statistics. Built with a database-driven architecture for efficient storage and retrieval of player data through API calls.",
+    "id": "brewbuddy",
+    "title": "brewbuddy",
+    "description": "A Social Media Review Site for Coffee Lovers",
     "longDescription": [
-      "Developed a full-stack web application using React.js for the frontend and Node.js, Express.js, and MongoDB for the backend",
-      "Implemented a database-driven architecture, efficiently storing and retrieving college basketball player data through API calls",
-      "Applied Styled Components for modular design, enhancing the maintainability and styling consistency of the application"
+      "Social Media app for Coffee Lovers",
+      "HTML, CSS (Bootstrap), JS frontend with a PHP backend",
+      "Persistent data using server database that is called using PHP backend",
+      "Implemented Google Maps API to mark Coffee Shop Locations",
+      "Authentication using email and password"
     ],
-    "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "Styled Components"],
-    "dates": "Fall 2023 - Spring 2024",
-    "githubUrl": "https://github.com/your-username/matrix-madness",
-    "demoUrl": "https://matrix-madness.yourdomain.com",
+    "technologies": ["HTML", "CSS", "JavaScript", "PHP", "Google Maps API", "LESS", "Bootstrap", "jQuery", "Docker", "JSON"],
+    "dates": "Jan 2025 - Apr 2025",
+    "githubUrl": "https://github.com/gcostello02/brewbuddy",
+    "demoUrl": "",
+    "media": [
+      {
+        "type": "video",
+        "url": "/media/projects/brewbuddy.webm",
+        "thumbnail": "",
+        "caption": "brewbuddy"
+      }
+    ]
+  },
+  {
+    "id": "bus-lines",
+    "title": "Bus Lines Mobile App",
+    "description": "A Mobile App for Bus Lines",
+    "longDescription": [
+    ],
+    "technologies": ["Flutter", "Dart", "JSON", "REST API", "JSON"],
+    "dates": "Mar 2025",
+    "githubUrl": "",
+    "demoUrl": "",
+    "media": [
+      {
+        "type": "video",
+        "url": "/media/projects/bus-lines.webm",
+        "thumbnail": "",
+        "caption": "Bus Lines Mobile App"
+      }
+    ]
+  },
+  {
+    "id": "college-basketball-scores",
+    "title": "College Basketball Live Scores App",
+    "description": "A Mobile App for College Basketball Scores",
+    "longDescription": [
+    ],
+    "technologies": ["Android Studio", "Android Jetpack", "Kotlin", "REST API", "JSON"],
+    "dates": "Feb 2025 - Mar 2025",
+    "githubUrl": "",
+    "demoUrl": "",
+    "media": [
+      {
+        "type": "video",
+        "url": "/media/projects/ncaam.webm",
+        "thumbnail": "",
+        "caption": "College Basketball Live Scores App"
+      }
+    ]
+  },
+  {
+    "id": "anagrams",
+    "title": "Anagrams.js",
+    "description": "",
+    "longDescription": [
+      "Anagrams game implemented fully using JavaScript",
+      "Uses local storage to save game data"
+    ],
+    "technologies": ["Android Studio", "Android Jetpack", "Kotlin", "REST API", "JSON"],
+    "dates": "Mar 2025",
+    "githubUrl": "",
+    "demoUrl": "",
     "media": [
       {
         "type": "image",
-        "url": "/media/projects/matrix-madness/dashboard.png",
-        "caption": "Stats dashboard"
-      },
+        "url": "/media/projects/anagram.jpeg",
+        "caption": "Anagrams.js"
+      }
+    ]
+  },
+  {
+    "id": "matrix-madness",
+    "title": "Matrix Madness Web Application",
+    "description": "",
+    "longDescription": [
+      "Full Stack Web App using React.js Frontend and Node.js, Express.js, and MongoDB Backend",
+      "Store College Basketball Player Data in MongoDB and fetch and display by frontend using Express server",
+      "Utilize Styled Components in React frontend",
+      "Similar to the popular game Immaculate Grid"
+    ],
+    "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "Styled Components"],
+    "dates": "Oct 2023 - Jan 2024",
+    "githubUrl": "https://github.com/RobBundy2002/BasketballGridProject",
+    "demoUrl": "https://matrix-madness-frontend.onrender.com/",
+    "media": [
+    ]
+  },
+  {
+    "id": "react-tetris",
+    "title": "React Tetris Game",
+    "description": "A React.js implementation of the classic Tetris game",
+    "longDescription": [
+      "Implemented using React.js and CSS for styling",
+      "Features include game controls, scoring system, and next piece preview",
+      "Responsive design that works on desktop and mobile devices"
+    ],
+    "technologies": ["React.js", "CSS", "JavaScript"],
+    "dates": "Jul 2023 - Aug 2023",
+    "githubUrl": "https://github.com/gcostello02/react-tetris",
+    "demoUrl": "",
+    "media": [
       {
-        "type": "video",
-        "url": "/media/projects/matrix-madness/demo.mp4",
-        "thumbnail": "/media/projects/matrix-madness/demo-thumb.jpg",
-        "caption": "Product walkthrough"
+        "type": "image",
+        "url": "/media/projects/react-tetris.jpeg",
+        "caption": "React Tetris Game"
       }
     ]
   }
