@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Link } from "wouter";
 import { getProfile } from "@/lib/content";
 
 interface InfoPackProps {
@@ -206,10 +207,10 @@ export function InfoPack({ isOpen, onClose }: InfoPackProps) {
             asChild
             data-testid="button-contact-cta"
           >
-            <a href={`mailto:${profile.email}`}>
+            <Link href="/contact" onClick={onClose}>
               <Mail className="h-4 w-4 mr-2" />
               Contact Grant
-            </a>
+            </Link>
           </Button>
         </motion.div>
       </DialogContent>
