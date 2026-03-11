@@ -31,12 +31,6 @@ const SECTIONS: SectionCardData[] = [
     iconType: "experience",
   },
   {
-    id: "skills",
-    label: "Skills",
-    sublabel: "Technical abilities",
-    iconType: "skills",
-  },
-  {
     id: "interests",
     label: "Interests",
     sublabel: "Beyond code",
@@ -54,7 +48,6 @@ const SECTION_ROUTES: Record<string, string> = {
   education: "/education",
   projects: "/projects",
   experience: "/experience",
-  skills: "/skills",
   interests: "/interests",
   contact: "/contact",
 };
@@ -79,7 +72,7 @@ export default function Home() {
     <>
       <SEO
         title="Home"
-        description={`${profile.name} - ${profile.title}. ${profile.tagline}. Explore my portfolio including projects, experience, skills, and education.`}
+        description={`${profile.name} - ${profile.title}. ${profile.tagline}. Explore my portfolio including projects, experience, and education.`}
         path="/"
       />
       <div className="relative min-h-screen overflow-hidden" data-testid="home-page">

@@ -7,7 +7,6 @@ export const TRAIL_STOPS = [
   { id: "education", label: "Education", path: "/education" },
   { id: "experience", label: "Experience", path: "/experience" },
   { id: "projects", label: "Projects", path: "/projects" },
-  { id: "skills", label: "Skills", path: "/skills" },
   { id: "interests", label: "Interests", path: "/interests" },
   { id: "contact", label: "Contact", path: "/contact" },
 ] as const;

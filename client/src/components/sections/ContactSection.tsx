@@ -62,17 +62,50 @@ export function ContactSection() {
     },
   });
 
+  const formspreeFormId = import.meta.env.VITE_FORMSPREE_FORM_ID;
+
   const onSubmit = async (data: ContactFormValues) => {
+    if (!formspreeFormId) {
+      toast({
+        title: "Form not configured",
+        description: "Please set VITE_FORMSPREE_FORM_ID in your environment.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const res = await fetch(`https://formspree.io/f/${formspreeFormId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          _replyto: data.email,
+        }),
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Request failed: ${res.status}`);
+      }
 
-    form.reset();
-    setIsSubmitting(false);
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (e) {
+      toast({
+        title: "Something went wrong",
+        description: e instanceof Error ? e.message : "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

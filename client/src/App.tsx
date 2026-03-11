@@ -10,7 +10,6 @@ import { InfoPackTrigger } from "@/components/InfoPackTrigger";
 import Home from "@/pages/Home";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ExperiencePage from "@/pages/ExperiencePage";
-import SkillsPage from "@/pages/SkillsPage";
 import InterestsPage from "@/pages/InterestsPage";
 import ContactPage from "@/pages/ContactPage";
 import EducationPage from "@/pages/EducationPage";
@@ -22,7 +21,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/projects" component={ProjectsPage} />
       <Route path="/experience" component={ExperiencePage} />
-      <Route path="/skills" component={SkillsPage} />
       <Route path="/interests" component={InterestsPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/education" component={EducationPage} />

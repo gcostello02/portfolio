@@ -5,7 +5,6 @@ import {
   Home,
   Briefcase,
   FolderGit2,
-  Wrench,
   Heart,
   Mail,
   Search,
@@ -21,13 +20,12 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { useTheme } from "./ThemeProvider";
-import { getExperience, getProjects, getSkills } from "@/lib/content";
+import { getExperience, getProjects } from "@/lib/content";
 
 const NAVIGATION_ITEMS = [
   { id: "home", label: "Home", path: "/", icon: Home },
   { id: "experience", label: "Experience", path: "/experience", icon: Briefcase },
   { id: "projects", label: "Projects", path: "/projects", icon: FolderGit2 },
-  { id: "skills", label: "Skills", path: "/skills", icon: Wrench },
   { id: "interests", label: "Interests", path: "/interests", icon: Heart },
   { id: "contact", label: "Contact", path: "/contact", icon: Mail },
 ];
@@ -67,7 +65,6 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
 
   const experience = getExperience();
   const projects = getProjects();
-  const skills = getSkills();
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
@@ -123,27 +120,6 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
                 <span>{project.title}</span>
                 <span className="text-xs text-muted-foreground">
                   {project.technologies.slice(0, 3).join(", ")}
-                </span>
-              </div>
-            </CommandItem>
-          ))}
-        </CommandGroup>
-
-        <CommandSeparator />
-
-        <CommandGroup heading="Skills">
-          {skills.categories.map((category) => (
-            <CommandItem
-              key={category.name}
-              value={`skill-${category.name}`}
-              onSelect={() => handleSelect(`/skills#${category.name.toLowerCase().replace(/\s+/g, "-")}`)}
-              data-testid={`command-item-skill-${category.name}`}
-            >
-              <Wrench className="mr-2 h-4 w-4" />
-              <div className="flex flex-col">
-                <span>{category.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  {category.skills.slice(0, 4).map((s) => s.name).join(", ")}
                 </span>
               </div>
             </CommandItem>

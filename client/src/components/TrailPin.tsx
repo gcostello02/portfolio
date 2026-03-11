@@ -3,7 +3,6 @@ import {
   Home, 
   FolderOpen, 
   Briefcase, 
-  Code, 
   Heart, 
   Mail,
   Check,
@@ -17,7 +16,7 @@ export interface TrailPinData {
   id: string;
   label: string;
   sublabel: string;
-  iconType: "home" | "projects" | "experience" | "skills" | "interests" | "contact";
+  iconType: "home" | "projects" | "experience" | "interests" | "contact";
   position: { x: number; y: number };
 }
 
@@ -32,7 +31,6 @@ const iconMap: Record<TrailPinData["iconType"], LucideIcon> = {
   home: Home,
   projects: FolderOpen,
   experience: Briefcase,
-  skills: Code,
   interests: Heart,
   contact: Mail,
 };

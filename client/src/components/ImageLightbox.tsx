@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -77,7 +78,9 @@ export function ImageLightbox({
           <video
             src={currentMedia.url}
             controls
-            autoPlay
+            muted
+            playsInline
+            preload="metadata"
             className="max-w-full max-h-[85vh] rounded-lg"
             data-testid="video-lightbox-player"
           />
@@ -113,11 +116,11 @@ export function ImageLightbox({
     }
   };
 
-  return (
+  const lightboxContent = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-[100] flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -166,7 +169,7 @@ export function ImageLightbox({
           )}
 
           <motion.div
-            className="relative z-10 flex flex-col items-center"
+            className="relative z-10 flex flex-col items-center max-w-[100vw] max-h-[100vh] p-4"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -200,4 +203,8 @@ export function ImageLightbox({
       )}
     </AnimatePresence>
   );
+
+  return typeof document !== "undefined"
+    ? createPortal(lightboxContent, document.body)
+    : lightboxContent;
 }

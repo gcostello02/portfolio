@@ -5,9 +5,8 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 const PREFETCH_ROUTES = [
   "/education",
-  "/experience", 
+  "/experience",
   "/projects",
-  "/skills",
   "/interests",
   "/contact",
 ];

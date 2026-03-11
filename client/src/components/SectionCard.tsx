@@ -3,7 +3,6 @@ import {
   GraduationCap, 
   FolderOpen, 
   Briefcase, 
-  Code, 
   Heart, 
   Mail,
   Check,
@@ -17,7 +16,7 @@ export interface SectionCardData {
   id: string;
   label: string;
   sublabel: string;
-  iconType: "education" | "projects" | "experience" | "skills" | "interests" | "contact";
+  iconType: "education" | "projects" | "experience" | "interests" | "contact";
 }
 
 interface SectionCardProps {
@@ -31,7 +30,6 @@ const iconMap: Record<SectionCardData["iconType"], LucideIcon> = {
   education: GraduationCap,
   projects: FolderOpen,
   experience: Briefcase,
-  skills: Code,
   interests: Heart,
   contact: Mail,
 };

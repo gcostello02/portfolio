@@ -72,8 +72,8 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-4">
-        <ProjectsSection variant="carousel" autoPlay />
+      <section className="container mx-auto px-4 py-8 md:py-12">
+        <ProjectsSection variant="grid" />
       </section>
     </motion.div>
     </>

@@ -24,7 +24,6 @@ const iconMap: Record<TrailPinData["iconType"], LucideIcon> = {
   home: Home,
   projects: FolderOpen,
   experience: Briefcase,
-  skills: Code,
   interests: Heart,
   contact: Mail,
 };

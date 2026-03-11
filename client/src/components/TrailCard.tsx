@@ -2,7 +2,6 @@ import {
   GraduationCap,
   Briefcase,
   FolderGit2,
-  Wrench,
   Heart,
   Mail,
   ExternalLink,
@@ -20,7 +19,6 @@ import {
   EducationSection,
   ProjectsSection,
   ExperienceSection,
-  SkillsSection,
   InterestsSection,
   ContactSection,
 } from "@/components/sections";
@@ -63,13 +61,6 @@ const SECTION_CONFIG: Record<
     icon: Briefcase,
     route: "/experience",
     component: ExperienceSection,
-  },
-  skills: {
-    title: "Skills",
-    description: "Technical expertise and tools",
-    icon: Wrench,
-    route: "/skills",
-    component: SkillsSection,
   },
   interests: {
     title: "Interests",

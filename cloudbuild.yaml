@@ -1,0 +1,25 @@
+# Build the app image and push to Artifact Registry.
+# Deploy with: ./scripts/deploy-gcloud.sh or scripts/deploy-gcloud.ps1
+# Required substitutions (or set in .env): _REGION, _REPO, _IMAGE
+# Optional: _VITE_FORMSPREE_FORM_ID for contact form (from .env VITE_FORMSPREE_FORM_ID)
+substitutions:
+  _REGION: us-central1
+  _REPO: portfolio
+  _IMAGE: portfolio
+  _VITE_FORMSPREE_FORM_ID: ""
+
+options:
+  substitutionOption: ALLOW_LOOSE
+
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "--build-arg"
+      - "VITE_FORMSPREE_FORM_ID=${_VITE_FORMSPREE_FORM_ID}"
+      - "-t"
+      - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:latest"
+      - "."
+
+images:
+  - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:latest"
