@@ -1,10 +1,18 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Calendar, Image as ImageIcon, Play, Globe } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { getProjects, type Project, type ProjectMedia } from "@/lib/content";
 
@@ -227,8 +235,50 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-export function ProjectsSection() {
+type ProjectsSectionProps = {
+  variant?: "grid" | "carousel";
+  autoPlay?: boolean;
+  autoPlayInterval?: number;
+};
+
+export function ProjectsSection({
+  variant = "grid",
+  autoPlay = false,
+  autoPlayInterval = 6000,
+}: ProjectsSectionProps = {}) {
   const projects = getProjects();
+  const prefersReducedMotion = useReducedMotion();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const isPaused = isHovered || isFocused;
+
+  const autoPlayEnabled =
+    variant === "carousel" &&
+    autoPlay &&
+    !prefersReducedMotion &&
+    projects.length > 1;
+
+  useEffect(() => {
+    if (!autoPlayEnabled || !carouselApi || autoPlayInterval <= 0) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      if (isPaused) return;
+      carouselApi.scrollNext();
+    }, autoPlayInterval);
+
+    return () => window.clearInterval(intervalId);
+  }, [autoPlayEnabled, autoPlayInterval, carouselApi, isPaused]);
+
+  const handleBlurCapture = (event: React.FocusEvent<HTMLDivElement>) => {
+    const nextTarget = event.relatedTarget as Node | null;
+    if (nextTarget && event.currentTarget.contains(nextTarget)) {
+      return;
+    }
+    setIsFocused(false);
+  };
 
   return (
     <motion.div
@@ -238,14 +288,38 @@ export function ProjectsSection() {
       animate="visible"
       data-testid="projects-section"
     >
-
-      <div className="grid gap-4 lg:grid-cols-2">
-        {projects.map((project) => (
-          <motion.div key={project.id} variants={cardVariants} className="h-full">
-            <ProjectCard project={project} />
-          </motion.div>
-        ))}
-      </div>
+      {variant === "carousel" ? (
+        <Carousel
+          className="relative"
+          opts={{ align: "start", loop: projects.length > 1 }}
+          setApi={(api) => setCarouselApi(api ?? null)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onFocusCapture={() => setIsFocused(true)}
+          onBlurCapture={handleBlurCapture}
+          data-testid="projects-carousel"
+        >
+          <CarouselContent>
+            {projects.map((project) => (
+              <CarouselItem key={project.id} className="lg:basis-1/2">
+                <motion.div variants={cardVariants} className="h-full">
+                  <ProjectCard project={project} />
+                </motion.div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      ) : (
+        <div className="grid gap-4 lg:grid-cols-2">
+          {projects.map((project) => (
+            <motion.div key={project.id} variants={cardVariants} className="h-full">
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 }
