@@ -3,7 +3,7 @@
 # Required substitutions (or set in .env): _REGION, _REPO, _IMAGE
 # Optional: _VITE_FORMSPREE_FORM_ID for contact form (from .env VITE_FORMSPREE_FORM_ID)
 substitutions:
-  _REGION: us-central1
+  _REGION: us-east4
   _REPO: portfolio
   _IMAGE: portfolio
   _VITE_FORMSPREE_FORM_ID: ""

@@ -58,15 +58,10 @@ This repo includes a Dockerfile and one-command deployment scripts.
 - `scripts/deploy-gcloud.sh` (macOS/Linux)
 - `scripts/deploy-gcloud.ps1` (Windows PowerShell)
 
-### Steps (edit once, then run one command)
-1) Open the script for your OS and fill in these values:
-- `PROJECT_ID`
-- `REGION`
-- `REPO`
-- `IMAGE`
-- `SERVICE`
+### Steps
+Defaults target GCP project **`gcostello`** and region **`us-east4`**. Override with a `.env` file in the repo root (`PROJECT_ID`, `REGION`, `REPO`, `IMAGE`, `SERVICE`, `VITE_FORMSPREE_FORM_ID`).
 
-2) Run the script.
+Run the script:
 
 macOS / Linux:
 ```

@@ -23,16 +23,12 @@ if (Test-Path .env) {
 }
 
 # Config: from env or defaults
-$PROJECT_ID = if ($env:PROJECT_ID) { $env:PROJECT_ID } else { "YOUR_PROJECT_ID" }
-$REGION = if ($env:REGION) { $env:REGION } else { "us-central1" }
+$PROJECT_ID = if ($env:PROJECT_ID) { $env:PROJECT_ID } else { "gcostello" }
+$REGION = if ($env:REGION) { $env:REGION } else { "us-east4" }
 $REPO = if ($env:REPO) { $env:REPO } else { "portfolio" }
 $IMAGE = if ($env:IMAGE) { $env:IMAGE } else { "portfolio" }
 $SERVICE = if ($env:SERVICE) { $env:SERVICE } else { "portfolio" }
 $FORMSPREE_ID = if ($env:VITE_FORMSPREE_FORM_ID) { $env:VITE_FORMSPREE_FORM_ID } else { "" }
-
-if ($PROJECT_ID -eq "YOUR_PROJECT_ID") {
-  Write-Error "Set PROJECT_ID in .env or environment. Copy .env.example to .env and fill in your values."
-}
 
 if (-not (Get-Command gcloud -ErrorAction SilentlyContinue)) {
   Write-Error "gcloud CLI is not installed"

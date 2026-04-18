@@ -14,18 +14,12 @@ if [[ -f .env ]]; then
 fi
 
 # Config: from env or defaults (set in .env or export before running)
-PROJECT_ID="${PROJECT_ID:-YOUR_PROJECT_ID}"
-REGION="${REGION:-us-central1}"
+PROJECT_ID="${PROJECT_ID:-gcostello}"
+REGION="${REGION:-us-east4}"
 REPO="${REPO:-portfolio}"
 IMAGE="${IMAGE:-portfolio}"
 SERVICE="${SERVICE:-portfolio}"
 FORMSPREE_ID="${VITE_FORMSPREE_FORM_ID:-}"
-
-if [[ "$PROJECT_ID" == "YOUR_PROJECT_ID" ]]; then
-  echo "Error: Set PROJECT_ID in .env or export it."
-  echo "Copy .env.example to .env and fill in your values."
-  exit 1
-fi
 
 command -v gcloud >/dev/null 2>&1 || { echo "gcloud CLI is not installed"; exit 1; }
 
