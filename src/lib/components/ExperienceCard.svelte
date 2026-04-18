@@ -90,7 +90,7 @@
         {/if}
         {#if exp.technologies.length > 0}
           <div class="flex flex-wrap gap-1 pt-2">
-            {#each exp.technologies as tech (tech)}
+            {#each exp.technologies as tech, i (`${exp.id}-tech-${i}`)}
               <Badge variant="outline" class="text-xs">{tech}</Badge>
             {/each}
           </div>

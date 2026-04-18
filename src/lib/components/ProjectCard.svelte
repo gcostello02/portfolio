@@ -74,7 +74,7 @@
           Technologies
         </span>
         <div class="flex flex-wrap gap-1.5">
-          {#each project.technologies as tech (tech)}
+          {#each project.technologies as tech, i (`${project.id}-tech-${i}`)}
             <Badge variant="outline" class="text-xs font-normal">{tech}</Badge>
           {/each}
         </div>

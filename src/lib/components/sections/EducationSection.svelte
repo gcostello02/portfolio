@@ -74,7 +74,7 @@
                       <span class="text-xs text-muted-foreground">Skills:</span>
                     </div>
                     <div class="flex flex-wrap gap-1">
-                      {#each course.skills as skill (skill)}
+                      {#each course.skills as skill, si (`${course.code}-${si}`)}
                         <Badge variant="secondary" class="py-0 text-xs">{skill}</Badge>
                       {/each}
                     </div>
