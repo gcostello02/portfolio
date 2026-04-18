@@ -6,7 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$ROOT_DIR"
 
-# Load .env if present (PROJECT_ID, REGION, VITE_FORMSPREE_FORM_ID, etc.)
+# Load .env if present (PROJECT_ID, REGION, PUBLIC_FORMSPREE_FORM_ID, etc.)
 if [[ -f .env ]]; then
   set -a
   source .env
@@ -19,7 +19,7 @@ REGION="${REGION:-us-east4}"
 REPO="${REPO:-portfolio}"
 IMAGE="${IMAGE:-portfolio}"
 SERVICE="${SERVICE:-portfolio}"
-FORMSPREE_ID="${VITE_FORMSPREE_FORM_ID:-}"
+FORMSPREE_ID="${PUBLIC_FORMSPREE_FORM_ID:-${VITE_FORMSPREE_FORM_ID:-}}"
 
 command -v gcloud >/dev/null 2>&1 || { echo "gcloud CLI is not installed"; exit 1; }
 
@@ -43,7 +43,7 @@ gcloud artifacts repositories describe "$REPO" --location="$REGION" &>/dev/null 
 
 echo "Building and pushing image (Formspree ID: ${FORMSPREE_ID:+set})..."
 SUBSTITUTIONS="_REGION=$REGION,_REPO=$REPO,_IMAGE=$IMAGE"
-[[ -n "$FORMSPREE_ID" ]] && SUBSTITUTIONS="$SUBSTITUTIONS,_VITE_FORMSPREE_FORM_ID=$FORMSPREE_ID"
+[[ -n "$FORMSPREE_ID" ]] && SUBSTITUTIONS="$SUBSTITUTIONS,_PUBLIC_FORMSPREE_FORM_ID=$FORMSPREE_ID"
 
 gcloud builds submit \
   --config=cloudbuild.yaml \

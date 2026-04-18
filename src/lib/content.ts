@@ -1,0 +1,114 @@
+import profileData from "./content/profile.json";
+import experienceData from "./content/experience.json";
+import projectsData from "./content/projects.json";
+import interestsData from "./content/interests.json";
+import educationData from "./content/education.json";
+
+export interface Course {
+  name: string;
+  code: string;
+  description: string;
+  skills: string[];
+}
+
+export interface Degree {
+  type: string;
+  field: string;
+  college?: string;
+  courses: Course[];
+}
+
+export interface Education {
+  school: string;
+  schoolShort: string;
+  degrees: Degree[];
+  location: string;
+  graduationYear: number;
+  graduationDate: string;
+  gpa: number;
+}
+
+export interface Profile {
+  name: string;
+  title: string;
+  tagline: string;
+  location: string;
+  email: string;
+  phone: string;
+  summary: string;
+  github: {
+    personal: string;
+    work: string;
+  };
+  linkedin: string;
+}
+
+export interface Experience {
+  id: string;
+  company: string;
+  role: string;
+  location: string;
+  dates: string;
+  startDate: string;
+  endDate: string | null;
+  description: string[];
+  technologies: string[];
+}
+
+export interface ProjectMedia {
+  type: "image" | "video" | "youtube" | "iframe";
+  url: string;
+  thumbnail?: string;
+  caption?: string;
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  longDescription: string[];
+  technologies: string[];
+  githubUrl?: string | null;
+  demoUrl?: string | null;
+  media?: ProjectMedia[];
+  featured?: boolean;
+  dates: string;
+}
+
+export interface InterestHighlight {
+  title: string;
+  dates: string;
+  description: string;
+}
+
+export interface Interest {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  highlights: InterestHighlight[];
+}
+
+export interface Interests {
+  interests: Interest[];
+}
+
+export function getProfile(): Profile {
+  return profileData as Profile;
+}
+
+export function getExperience(): Experience[] {
+  return experienceData as Experience[];
+}
+
+export function getProjects(): Project[] {
+  return projectsData as Project[];
+}
+
+export function getInterests(): Interests {
+  return interestsData as Interests;
+}
+
+export function getEducation(): Education {
+  return educationData as Education;
+}

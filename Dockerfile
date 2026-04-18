@@ -7,9 +7,9 @@ FROM node:20-slim AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Formspree form ID for contact form (optional; set via build-arg in cloudbuild)
-ARG VITE_FORMSPREE_FORM_ID
-ENV VITE_FORMSPREE_FORM_ID=$VITE_FORMSPREE_FORM_ID
+# Contact form (optional; set via build-arg in Cloud Build)
+ARG PUBLIC_FORMSPREE_FORM_ID
+ENV PUBLIC_FORMSPREE_FORM_ID=$PUBLIC_FORMSPREE_FORM_ID
 ENV NODE_ENV=production
 RUN npm run build
 
@@ -17,8 +17,9 @@ FROM node:20-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8080
+ENV HOST=0.0.0.0
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
-COPY --from=build /app/dist ./dist
+COPY --from=build /app/build ./build
 EXPOSE 8080
-CMD ["node", "dist/index.cjs"]
+CMD ["node", "build/index.js"]

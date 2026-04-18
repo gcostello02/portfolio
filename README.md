@@ -1,90 +1,82 @@
 # Grant Costello Portfolio
 
-A modern, data-driven portfolio site built with React + Vite on the client and an Express server. Content is edited via JSON files.
+A modern, data-driven portfolio site built with **SvelteKit**. Content is edited via JSON files. The app is prerendered for fast loads, uses **long-lived cache headers** for hashed assets, and registers a **service worker** so repeat visits can reuse cached shell and immutable chunks.
 
 ## Tech Stack
-- React 18 + Vite
-- TypeScript
-- Express (Node)
-- Tailwind CSS + shadcn/ui
-- Framer Motion
+
+- SvelteKit 2 + Svelte 5 + TypeScript
+- Tailwind CSS
+- lucide-svelte
+- Zod (contact form validation)
+- Node adapter (`@sveltejs/adapter-node`) for production / Cloud Run
 
 ## Requirements
+
 - Node.js 20.x recommended
 - npm
 
 ## Local Development
-1) Install deps:
-```
+
+1. Install dependencies:
+
+```bash
 npm install
 ```
 
-2) Start dev server:
-```
+2. Start the dev server:
+
+```bash
 npm run dev
 ```
 
-3) Open:
-```
-http://localhost:5000
-```
+3. Open `http://localhost:5173` (or the URL printed in the terminal).
 
-## Build + Run (Production)
-1) Build:
-```
+## Build and Run (Production)
+
+```bash
 npm run build
-```
-
-2) Run:
-```
 npm run start
 ```
 
+By default the Node server listens on `PORT` (default `3000` for adapter-node) and `HOST` (set `0.0.0.0` for containers).
+
 ## Content Editing
-All content lives in `client/src/content/`:
+
+All content lives in `src/lib/content/`:
+
 - `profile.json`
 - `education.json`
 - `experience.json`
 - `projects.json`
-- `skills.json`
 - `interests.json`
 
+## Environment Variables
+
+- **`PUBLIC_FORMSPREE_FORM_ID`**: Formspree form ID for the contact form (optional). Client-visible env vars use the `PUBLIC_` prefix.
+- **`PORT`**: Server port (Cloud Run uses `8080` automatically).
+- **`HOST`**: Bind address (use `0.0.0.0` for Cloud Run).
+
 ## Deployment to Google Cloud (Cloud Run)
-This repo includes a Dockerfile and one-command deployment scripts.
 
-### Files
-- `Dockerfile`
-- `.dockerignore`
-- `scripts/deploy-gcloud.sh` (macOS/Linux)
-- `scripts/deploy-gcloud.ps1` (Windows PowerShell)
+Defaults target GCP project **`gcostello`** and region **`us-east4`**. Override with a `.env` file in the repo root (`PROJECT_ID`, `REGION`, `REPO`, `IMAGE`, `SERVICE`, `PUBLIC_FORMSPREE_FORM_ID`).
 
-### Steps
-Defaults target GCP project **`gcostello`** and region **`us-east4`**. Override with a `.env` file in the repo root (`PROJECT_ID`, `REGION`, `REPO`, `IMAGE`, `SERVICE`, `VITE_FORMSPREE_FORM_ID`).
+Run:
 
-Run the script:
+**macOS / Linux**
 
-macOS / Linux:
-```
+```bash
 ./scripts/deploy-gcloud.sh
 ```
 
-Windows PowerShell:
-```
+**Windows PowerShell**
+
+```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\deploy-gcloud.ps1
 ```
 
-### What the script does
-- Enables required GCP APIs
-- Creates an Artifact Registry repo (if needed)
-- Builds and pushes the Docker image with Cloud Build
-- Deploys to Cloud Run and sets `HOST=0.0.0.0`
-
-## Environment Variables
-- `PORT`: Server port (Cloud Run uses 8080 automatically)
-- `HOST`: Bind host (Cloud Run needs `0.0.0.0`)
-- `DATABASE_URL`: Only needed if you add real DB usage
+The Docker build passes `PUBLIC_FORMSPREE_FORM_ID` as a build argument so the contact form ID is embedded at build time.
 
 ## Troubleshooting
-- If the dev server fails to bind on macOS with Node 24, use Node 20 or ensure `HOST=127.0.0.1` locally.
-- If Cloud Run deploy fails, confirm the project ID and region are correct and that billing is enabled.
+
+- If Cloud Run deploy fails, confirm the project ID and region and that billing is enabled.
 - If `gcloud builds submit` fails with `PERMISSION_DENIED`, grant your user `roles/cloudbuild.builds.editor` and `roles/artifactregistry.writer` in the project.

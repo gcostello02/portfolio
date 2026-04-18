@@ -28,7 +28,7 @@ $REGION = if ($env:REGION) { $env:REGION } else { "us-east4" }
 $REPO = if ($env:REPO) { $env:REPO } else { "portfolio" }
 $IMAGE = if ($env:IMAGE) { $env:IMAGE } else { "portfolio" }
 $SERVICE = if ($env:SERVICE) { $env:SERVICE } else { "portfolio" }
-$FORMSPREE_ID = if ($env:VITE_FORMSPREE_FORM_ID) { $env:VITE_FORMSPREE_FORM_ID } else { "" }
+$FORMSPREE_ID = if ($env:PUBLIC_FORMSPREE_FORM_ID) { $env:PUBLIC_FORMSPREE_FORM_ID } elseif ($env:VITE_FORMSPREE_FORM_ID) { $env:VITE_FORMSPREE_FORM_ID } else { "" }
 
 if (-not (Get-Command gcloud -ErrorAction SilentlyContinue)) {
   Write-Error "gcloud CLI is not installed"
@@ -55,7 +55,7 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host "Building and pushing image (Formspree ID: $(if ($FORMSPREE_ID) { 'set' } else { 'not set' }))..."
 $substitutions = "_REGION=$REGION,_REPO=$REPO,_IMAGE=$IMAGE"
 if ($FORMSPREE_ID) {
-  $substitutions += ",_VITE_FORMSPREE_FORM_ID=$FORMSPREE_ID"
+  $substitutions += ",_PUBLIC_FORMSPREE_FORM_ID=$FORMSPREE_ID"
 }
 
 gcloud builds submit `

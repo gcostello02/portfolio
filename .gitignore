@@ -1,8 +1,9 @@
 node_modules
 dist
+build
+.svelte-kit
 .env
 .env.local
 .DS_Store
-server/public
 vite.config.ts.*
 *.tar.gz
