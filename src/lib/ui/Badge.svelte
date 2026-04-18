@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
   import { cn } from "$lib/utils";
 
   type Variant = "default" | "secondary" | "outline" | "destructive";
@@ -6,7 +7,8 @@
   let {
     variant = "default",
     class: klass = "",
-  }: { variant?: Variant; class?: string } = $props();
+    children,
+  }: { variant?: Variant; class?: string; children?: Snippet } = $props();
 
   const variants: Record<Variant, string> = {
     default: "border-transparent bg-primary text-primary-foreground",
@@ -24,5 +26,5 @@
     klass,
   )}
 >
-  <slot />
+  {@render children?.()}
 </span>
