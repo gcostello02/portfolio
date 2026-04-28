@@ -73,7 +73,7 @@
 >
   <div
     class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30 dark:to-muted/20"
-  />
+  ></div>
 
   <div
     bind:this={motionEl}
@@ -82,8 +82,7 @@
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid slice"
-      class="absolute inset-0 h-full w-full"
-      class="min-h-screen"
+      class="absolute inset-0 h-full w-full min-h-screen"
     >
       <defs>
         <linearGradient id="topoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -129,7 +128,7 @@
     </svg>
   </div>
 
-  <div class="topo-ambient pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-1000" />
+  <div class="topo-ambient pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-1000"></div>
 </div>
 
 <style>

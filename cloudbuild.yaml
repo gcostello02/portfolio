@@ -5,7 +5,7 @@ substitutions:
   _REGION: us-east4
   _REPO: portfolio
   _IMAGE: portfolio
-  _PUBLIC_FORMSPREE_FORM_ID: ""
+  _PUBLIC_FORMSPREE_FORM_ID: xwvrldpo
 
 options:
   substitutionOption: ALLOW_LOOSE

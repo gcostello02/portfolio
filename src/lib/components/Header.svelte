@@ -183,7 +183,7 @@
           {link.label}
         </a>
       {/each}
-      <div class="my-4 border-t" />
+      <div class="my-4 border-t"></div>
       <p class="mb-3 px-4 text-xs font-medium text-muted-foreground">GitHub</p>
       {#each GITHUB_ACCOUNTS as account (account.id)}
         <a
@@ -200,7 +200,7 @@
           <ExternalLink class="h-3.5 w-3.5" />
         </a>
       {/each}
-      <div class="my-2 border-t" />
+      <div class="my-2 border-t"></div>
       <a
         href="/resume.pdf"
         target="_blank"
@@ -211,7 +211,7 @@
         <FileText class="h-4 w-4" />
         View Resume
       </a>
-      <div class="my-4 border-t" />
+      <div class="my-4 border-t"></div>
       <div class="px-4">
         <TrailProgress />
       </div>

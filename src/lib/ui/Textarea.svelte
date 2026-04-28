@@ -16,4 +16,4 @@
   )}
   bind:value
   {...rest}
-/>
+></textarea>

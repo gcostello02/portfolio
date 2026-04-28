@@ -1,7 +1,8 @@
 FROM node:20-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+# Skip prepare: svelte.config is not copied yet (avoids "Missing Svelte config" noise).
+RUN npm ci --ignore-scripts
 
 FROM node:20-slim AS build
 WORKDIR /app
@@ -19,7 +20,8 @@ ENV NODE_ENV=production
 ENV PORT=8080
 ENV HOST=0.0.0.0
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+# Skip lifecycle scripts: svelte-kit is dev-only; runtime only needs prod deps + build/.
+RUN npm ci --omit=dev --ignore-scripts
 COPY --from=build /app/build ./build
 EXPOSE 8080
 CMD ["node", "build/index.js"]

@@ -36,7 +36,7 @@
     onclick: () => void;
   } = $props();
 
-  const Icon = iconMap[iconType];
+  const Icon = $derived(iconMap[iconType]);
 </script>
 
 <div data-testid="section-card-{id}">

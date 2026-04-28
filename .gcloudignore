@@ -1,0 +1,20 @@
+#!include:.gitignore
+
+# Repo metadata (not needed for Docker build)
+.git/
+.github/
+
+# Editor / local tooling
+.cursor/
+.idea/
+*.swp
+*.swo
+
+# Docs — not used by the container build
+*.md
+
+# Test / coverage (if present)
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
