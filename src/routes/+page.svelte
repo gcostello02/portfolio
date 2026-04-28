@@ -79,7 +79,13 @@
     property="og:description"
     content="{profile.name} - {profile.title}. {profile.tagline}."
   />
+  <meta property="og:url" content="https://gcostello.com/" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Home | {profile.name}" />
+  <meta
+    name="twitter:description"
+    content="{profile.name} - {profile.title}. {profile.tagline}."
+  />
 </svelte:head>
 
 <div class="relative min-h-screen overflow-hidden" data-testid="home-page">

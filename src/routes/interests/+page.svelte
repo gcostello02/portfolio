@@ -16,6 +16,12 @@
     name="description"
     content="Beyond software development — sports, teaching, and activities that keep me balanced."
   />
+  <meta property="og:title" content="Interests | {profile.name}" />
+  <meta property="og:description" content="Beyond software development — sports, teaching, and activities that keep me balanced." />
+  <meta property="og:url" content="https://gcostello.com/interests" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Interests | {profile.name}" />
+  <meta name="twitter:description" content="Beyond software development — sports, teaching, and activities that keep me balanced." />
 </svelte:head>
 
 <div class="min-h-screen bg-background" data-testid="interests-page">

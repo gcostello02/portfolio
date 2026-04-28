@@ -16,6 +16,12 @@
     name="description"
     content="Explore my portfolio of software projects including web applications, mobile apps, and tools."
   />
+  <meta property="og:title" content="Projects | {profile.name}" />
+  <meta property="og:description" content="Explore my portfolio of software projects including web applications, mobile apps, and tools." />
+  <meta property="og:url" content="https://gcostello.com/projects" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Projects | {profile.name}" />
+  <meta name="twitter:description" content="Explore my portfolio of software projects including web applications, mobile apps, and tools." />
 </svelte:head>
 
 <div class="min-h-screen bg-background" data-testid="projects-page">

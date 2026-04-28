@@ -19,6 +19,12 @@
       .map((d) => `${d.type} in ${d.field}`)
       .join(' & ')}. Class of {education.graduationYear}."
   />
+  <meta property="og:title" content="Education | {profile.name}" />
+  <meta property="og:description" content="{education.school} — {education.degrees.map((d) => `${d.type} in ${d.field}`).join(' & ')}. Class of {education.graduationYear}." />
+  <meta property="og:url" content="https://gcostello.com/education" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Education | {profile.name}" />
+  <meta name="twitter:description" content="{education.school} — {education.degrees.map((d) => `${d.type} in ${d.field}`).join(' & ')}. Class of {education.graduationYear}." />
 </svelte:head>
 
 <div class="min-h-screen bg-background" data-testid="education-page">

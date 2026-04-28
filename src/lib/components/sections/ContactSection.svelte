@@ -22,21 +22,42 @@
 
   const profile = getProfile();
 
+  const stripControl = (s: string) => s.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, "");
+
   const schema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    email: z.string().email("Please enter a valid email address"),
-    message: z.string().min(10, "Message must be at least 10 characters"),
+    name: z.string().transform(stripControl).pipe(
+      z.string().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
+    ),
+    email: z.string().transform(s => s.trim()).pipe(
+      z.string().email("Please enter a valid email address").max(254, "Email is too long"),
+    ),
+    message: z.string().transform(stripControl).pipe(
+      z.string().min(10, "Message must be at least 10 characters").max(5000, "Message is too long"),
+    ),
   });
 
   let name = $state("");
   let email = $state("");
   let message = $state("");
+  let honeypot = $state("");
   let submitting = $state(false);
   let toast = $state<{ type: "ok" | "err"; text: string } | null>(null);
+  let lastSubmitTime = 0;
+
+  const RATE_LIMIT_MS = 30_000;
 
   async function onSubmit(e: Event) {
     e.preventDefault();
     toast = null;
+
+    if (honeypot) return;
+
+    const now = Date.now();
+    if (now - lastSubmitTime < RATE_LIMIT_MS) {
+      toast = { type: "err", text: "Please wait before submitting again." };
+      return;
+    }
+
     const parsed = schema.safeParse({ name, email, message });
     if (!parsed.success) {
       const first = parsed.error.flatten().fieldErrors;
@@ -55,6 +76,7 @@
     }
 
     submitting = true;
+    lastSubmitTime = now;
     try {
       const res = await fetch(
         `https://formspree.io/f/${env.PUBLIC_FORMSPREE_FORM_ID}`,
@@ -122,6 +144,10 @@
     </CardHeader>
     <CardContent>
       <form class="space-y-4" onsubmit={onSubmit} data-testid="contact-form">
+        <div class="absolute -left-[9999px]" aria-hidden="true">
+          <label for="c-website">Website</label>
+          <input id="c-website" type="text" bind:value={honeypot} tabindex="-1" autocomplete="off" />
+        </div>
         <div>
           <label class="mb-1 block text-sm font-medium" for="c-name">Name</label>
           <Input id="c-name" bind:value={name} placeholder="Your name" data-testid="input-contact-name" />

@@ -3,6 +3,7 @@
   import { prefersReducedMotion } from "$lib/stores/theme";
 
   let container: HTMLDivElement | undefined = $state();
+  let motionEl: HTMLDivElement | undefined = $state();
   let mx = $state(0.5);
   let my = $state(0.5);
 
@@ -15,6 +16,11 @@
 
   const dx = $derived((mx - 0.5) * 40);
   const dy = $derived((my - 0.5) * 40);
+
+  $effect(() => {
+    if (!motionEl) return;
+    motionEl.style.transform = $prefersReducedMotion ? 'none' : `translate(${dx}px, ${dy}px)`;
+  });
 
   function topoPaths() {
     const lines: { d: string }[] = [];
@@ -70,16 +76,14 @@
   />
 
   <div
+    bind:this={motionEl}
     class="absolute inset-0 will-change-transform"
-    style:transform={$prefersReducedMotion
-      ? "none"
-      : `translate(${dx}px, ${dy}px)`}
   >
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid slice"
       class="absolute inset-0 h-full w-full"
-      style="min-height: 100vh"
+      class="min-h-screen"
     >
       <defs>
         <linearGradient id="topoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -125,10 +129,14 @@
     </svg>
   </div>
 
-  <div
-    class="pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-1000"
-    style="background: radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 60%, hsl(var(--secondary) / 0.06) 0%, transparent 40%),
-      radial-gradient(ellipse at 90% 80%, hsl(var(--accent) / 0.05) 0%, transparent 35%)"
-  />
+  <div class="topo-ambient pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-1000" />
 </div>
+
+<style>
+  .topo-ambient {
+    background:
+      radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, hsl(var(--secondary) / 0.06) 0%, transparent 40%),
+      radial-gradient(ellipse at 90% 80%, hsl(var(--accent) / 0.05) 0%, transparent 35%);
+  }
+</style>

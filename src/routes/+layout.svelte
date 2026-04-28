@@ -27,6 +27,10 @@
 </script>
 
 <svelte:head>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={profile.name} />
+  <meta property="og:image" content="https://gcostello.com/rotunda.png" />
+  <meta name="twitter:card" content="summary" />
   <script type="application/ld+json">
     {JSON.stringify({
       "@context": "https://schema.org",

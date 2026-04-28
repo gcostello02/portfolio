@@ -16,6 +16,12 @@
     name="description"
     content="My professional journey in software engineering — internships to full-time roles."
   />
+  <meta property="og:title" content="Experience | {profile.name}" />
+  <meta property="og:description" content="My professional journey in software engineering — internships to full-time roles." />
+  <meta property="og:url" content="https://gcostello.com/experience" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Experience | {profile.name}" />
+  <meta name="twitter:description" content="My professional journey in software engineering — internships to full-time roles." />
 </svelte:head>
 
 <div class="min-h-screen bg-background" data-testid="experience-page">

@@ -49,11 +49,8 @@
   >
     <Card
       class="relative cursor-pointer overflow-hidden p-4 transition-all duration-200 hover-elevate {visited
-        ? 'border-primary/20 bg-primary/5'
-        : 'border-border/50 bg-card/80 backdrop-blur-sm'}"
-      style={visited
-        ? "box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15)"
-        : "box-shadow: 0 4px 16px -4px hsl(var(--foreground) / 0.08)"}
+        ? 'border-primary/20 bg-primary/5 card-visited'
+        : 'border-border/50 bg-card/80 backdrop-blur-sm card-default'}"
     >
       <div class="flex items-center gap-4">
         <div
@@ -84,3 +81,12 @@
     </Card>
   </button>
 </div>
+
+<style>
+  :global(.card-visited) {
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+  }
+  :global(.card-default) {
+    box-shadow: 0 4px 16px -4px hsl(var(--foreground) / 0.08);
+  }
+</style>
