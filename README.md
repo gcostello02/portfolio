@@ -79,18 +79,9 @@ docker compose up -d
 3. **Cloudflare Zero Trust → Networks → Tunnels** → open your existing tunnel → **Public Hostname** → add:
    - `gcostello.com` → HTTP → `http://localhost:8080`
 
-   Match whatever pattern Jellyfin uses (if Jellyfin points at `http://jellyfin:8096`, you may need `http://host.docker.internal:8080` instead — check your Jellyfin hostname config and mirror it).
+   Match whatever pattern Jellyfin uses on that tunnel (if Jellyfin uses a container name like `http://jellyfin:8096`, try `http://host.docker.internal:8080` or the Docker bridge IP instead).
 
 4. Remove any old DNS record pointing `gcostello.com` at Cloud Run.
-
-### If you need a new dedicated tunnel
-
-```bash
-# .env needs TUNNEL_TOKEN and PUBLIC_FORMSPREE_FORM_ID
-docker compose --profile tunnel up -d --build
-```
-
-Add `gcostello.com` → `http://portfolio:8080` on that tunnel (Compose service name, not `localhost`).
 
 ### Updates
 

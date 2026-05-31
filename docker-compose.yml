@@ -1,12 +1,8 @@
 # Self-hosted deployment for mini PC + Cloudflare Tunnel.
 #
-# Existing tunnel (e.g. Jellyfin): only portfolio is needed.
 #   cp .env.example .env   # set PUBLIC_FORMSPREE_FORM_ID
 #   docker compose build && docker compose up -d
 #   Add gcostello.com → http://localhost:8080 on your tunnel's Public Hostnames tab
-#
-# New dedicated tunnel: use the "tunnel" profile (requires TUNNEL_TOKEN in .env).
-#   docker compose --profile tunnel up -d --build
 services:
   portfolio:
     build:
@@ -26,14 +22,3 @@ services:
       timeout: 5s
       retries: 3
       start_period: 15s
-
-  cloudflared:
-    profiles: ["tunnel"]
-    image: cloudflare/cloudflared:latest
-    restart: unless-stopped
-    command: tunnel run
-    environment:
-      TUNNEL_TOKEN: ${TUNNEL_TOKEN:?Set TUNNEL_TOKEN in .env}
-    depends_on:
-      portfolio:
-        condition: service_healthy
