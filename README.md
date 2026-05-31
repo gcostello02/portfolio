@@ -61,29 +61,38 @@ All content lives in `src/lib/content/`:
 Traffic flows:
 
 ```text
-Browser → Cloudflare (gcostello.com) → cloudflared tunnel → Docker portfolio:8080
+Browser → Cloudflare (gcostello.com) → your existing cloudflared → localhost:8080
 ```
 
-### One-time Cloudflare setup
+### If you already have a tunnel (e.g. Jellyfin)
 
-1. **Zero Trust → Networks → Tunnels → Create a tunnel** → choose **Docker**.
-2. Copy the **tunnel token** into `.env`.
-3. On the **Public Hostname** tab, add `gcostello.com` → HTTP → `portfolio:8080` (the Compose service name, not `localhost`).
-4. Add `www` if needed, or redirect it in Cloudflare.
+You do **not** need a second `cloudflared` or `TUNNEL_TOKEN`. One tunnel can serve many hostnames.
 
-### Deploy
+1. **`.env`** — only `PUBLIC_FORMSPREE_FORM_ID` is required.
+2. **Start portfolio:**
 
 ```bash
-git clone https://github.com/gcostello02/portfolio.git
-cd portfolio
-cp .env.example .env
-# edit .env — set TUNNEL_TOKEN and PUBLIC_FORMSPREE_FORM_ID
-
 docker compose build
 docker compose up -d
 ```
 
-Updates:
+3. **Cloudflare Zero Trust → Networks → Tunnels** → open your existing tunnel → **Public Hostname** → add:
+   - `gcostello.com` → HTTP → `http://localhost:8080`
+
+   Match whatever pattern Jellyfin uses (if Jellyfin points at `http://jellyfin:8096`, you may need `http://host.docker.internal:8080` instead — check your Jellyfin hostname config and mirror it).
+
+4. Remove any old DNS record pointing `gcostello.com` at Cloud Run.
+
+### If you need a new dedicated tunnel
+
+```bash
+# .env needs TUNNEL_TOKEN and PUBLIC_FORMSPREE_FORM_ID
+docker compose --profile tunnel up -d --build
+```
+
+Add `gcostello.com` → `http://portfolio:8080` on that tunnel (Compose service name, not `localhost`).
+
+### Updates
 
 ```bash
 git pull
@@ -93,6 +102,5 @@ docker compose up -d
 
 ### Troubleshooting
 
-- **502 from Cloudflare**: Public hostname URL must be `http://portfolio:8080`, not `localhost:8080`.
-- **Tunnel won't start**: Check `TUNNEL_TOKEN` in `.env` and run `docker compose logs cloudflared`.
-- **Contact form broken**: Rebuild the image after changing `PUBLIC_FORMSPREE_FORM_ID` — it's baked in at build time.
+- **502 from Cloudflare**: Wrong origin URL on the public hostname — check how Jellyfin is configured and use the same pattern for port `8080`.
+- **Contact form broken**: Rebuild after changing `PUBLIC_FORMSPREE_FORM_ID` — it's baked in at build time.
