@@ -8,7 +8,7 @@ A modern, data-driven portfolio site built with **SvelteKit**. Content is edited
 - Tailwind CSS
 - lucide-svelte
 - Zod (contact form validation)
-- Node adapter (`@sveltejs/adapter-node`) for production / Cloud Run
+- Node adapter (`@sveltejs/adapter-node`) for production / Docker
 
 ## Requirements
 
@@ -53,30 +53,46 @@ All content lives in `src/lib/content/`:
 ## Environment Variables
 
 - **`PUBLIC_FORMSPREE_FORM_ID`**: Formspree form ID for the contact form (optional). Client-visible env vars use the `PUBLIC_` prefix.
-- **`PORT`**: Server port (Cloud Run uses `8080` automatically).
-- **`HOST`**: Bind address (use `0.0.0.0` for Cloud Run).
+- **`PORT`**: Server port (Docker uses `8080`).
+- **`HOST`**: Bind address (use `0.0.0.0` in containers).
 
-## Deployment to Google Cloud (Cloud Run)
+## Deployment (Linux mini PC + Cloudflare Tunnel)
 
-Defaults target GCP project **`gcostello`** and region **`us-east4`**. Override with a `.env` file in the repo root (`PROJECT_ID`, `REGION`, `REPO`, `IMAGE`, `SERVICE`, `PUBLIC_FORMSPREE_FORM_ID`).
+Traffic flows:
 
-Run:
+```text
+Browser → Cloudflare (gcostello.com) → cloudflared tunnel → Docker portfolio:8080
+```
 
-**macOS / Linux**
+### One-time Cloudflare setup
+
+1. **Zero Trust → Networks → Tunnels → Create a tunnel** → choose **Docker**.
+2. Copy the **tunnel token** into `.env`.
+3. On the **Public Hostname** tab, add `gcostello.com` → HTTP → `portfolio:8080` (the Compose service name, not `localhost`).
+4. Add `www` if needed, or redirect it in Cloudflare.
+
+### Deploy
 
 ```bash
-./scripts/deploy-gcloud.sh
+git clone https://github.com/gcostello02/portfolio.git
+cd portfolio
+cp .env.example .env
+# edit .env — set TUNNEL_TOKEN and PUBLIC_FORMSPREE_FORM_ID
+
+docker compose build
+docker compose up -d
 ```
 
-**Windows PowerShell**
+Updates:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\deploy-gcloud.ps1
+```bash
+git pull
+docker compose build
+docker compose up -d
 ```
 
-The Docker build passes `PUBLIC_FORMSPREE_FORM_ID` as a build argument so the contact form ID is embedded at build time.
+### Troubleshooting
 
-## Troubleshooting
-
-- If Cloud Run deploy fails, confirm the project ID and region and that billing is enabled.
-- If `gcloud builds submit` fails with `PERMISSION_DENIED`, grant your user `roles/cloudbuild.builds.editor` and `roles/artifactregistry.writer` in the project.
+- **502 from Cloudflare**: Public hostname URL must be `http://portfolio:8080`, not `localhost:8080`.
+- **Tunnel won't start**: Check `TUNNEL_TOKEN` in `.env` and run `docker compose logs cloudflared`.
+- **Contact form broken**: Rebuild the image after changing `PUBLIC_FORMSPREE_FORM_ID` — it's baked in at build time.

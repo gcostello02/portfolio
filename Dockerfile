@@ -8,7 +8,7 @@ FROM node:20-slim AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Contact form (optional; set via build-arg in Cloud Build)
+# Contact form (optional; pass via --build-arg PUBLIC_FORMSPREE_FORM_ID=...)
 ARG PUBLIC_FORMSPREE_FORM_ID
 ENV PUBLIC_FORMSPREE_FORM_ID=$PUBLIC_FORMSPREE_FORM_ID
 ENV NODE_ENV=production
